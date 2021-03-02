@@ -43,7 +43,7 @@ end
 
 #sessions
 10.times do
-  Session.create!(min_participants: rand(1..5), max_participants: rand(8..10), start_time: Date.new(2021, 5, 10),
+  Session.create!(min_participants: rand(1..5), max_participants: rand(8..10), start_time: DateTime.now,
   end_time: Date.new(2021, 5, 12),
     price: rand(5..20), activity_id: Activity.pluck(:id).sample, confirmed: false)
 end
