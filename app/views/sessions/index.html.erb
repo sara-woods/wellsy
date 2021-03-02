@@ -1,0 +1,24 @@
+<!-- search results
+choose the right class for you
+filter -->
+
+
+
+<!-- sessions listed -->
+    <% @sessions.each do |session| %>
+    <div class="card-session">
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      <div class="card-session-info">
+        <h1><%= session.activity.name %></h1>
+      </div>
+      <div class="card-session-infos-numbers">
+        <h2> <%= session.start_time %> </h2>
+        <h3>Session Time</h3>
+        <p> <%= session.min_participants %> / <%= session.max_participants %> available </p>
+        <h3> £<%= session.price %> </h3>
+      </div>
+    </div>
+    <%= render "sessions/show", session: session %>
+  <% end %>
+
+
