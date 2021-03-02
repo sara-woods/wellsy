@@ -1,0 +1,33 @@
+
+<!-- link only to check if it's all working
+
+TO BE ADDED to all sessions -->
+
+<%= link_to "Book a session", session_bookings_path(Session.first), method: :post  %>
+
+
+<!-- search results
+choose the right class for you
+filter -->
+
+
+
+<!-- sessions listed -->
+<% @sessions.each do |session| %>
+  <div type="button" class="card-session" data-toggle="modal" data-target="#session-<%= session.id %>">
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      <div class="card-session-info">
+        <h1><%= session.activity.name %></h1>
+        <h2><%= session.activity.user.name %></h2>
+      </div>
+      <div class="card-session-infos-numbers">
+        <h2> <%= session.start_time.strftime("%A %d.%m.%y") %> </h2>
+        <p> <%= session.min_participants %> / <%= session.max_participants %> available </p>
+        <h2> <%= session.start_time.strftime("%I:%M %p") %> </h2>
+        <h3> £<%= session.price %> </h3>
+      </div>
+  </div>
+    <%= render "sessions/show", session: session %>
+<% end %>
+
+

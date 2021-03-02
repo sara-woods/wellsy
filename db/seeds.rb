@@ -17,7 +17,7 @@ Category.destroy_all
               email: Faker::Internet.email,
               password: "123456",
               trainer: [true, false].sample,
-              bio: "Hello I am a trainer",
+              bio: "Hello I am a trainer, and this is stuff about moi",
               zoom_link: "zoom.us"
               )
 end
@@ -43,7 +43,7 @@ end
 
 #sessions
 10.times do
-  Session.create!(min_participants: rand(1..5), max_participants: rand(8..10), start_time: Date.new(2021, 5, 10),
+  Session.create!(min_participants: rand(1..5), max_participants: rand(8..10), start_time: DateTime.now,
   end_time: Date.new(2021, 5, 12),
     price: rand(5..20), activity_id: Activity.pluck(:id).sample, confirmed: false)
 end
