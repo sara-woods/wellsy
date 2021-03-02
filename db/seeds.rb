@@ -17,7 +17,7 @@ Category.destroy_all
               email: Faker::Internet.email,
               password: "123456",
               trainer: [true, false].sample,
-              bio: "Hello I am a trainer",
+              bio: "Hello I am a trainer, and this is stuff about moi",
               zoom_link: "zoom.us"
               )
 end

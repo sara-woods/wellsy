@@ -7,24 +7,38 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <ul style="list-style-type: none;">
+          <li>
+            <h5 class="modal-title" id="exampleModalLabel">Class: <%= session.activity.name %></h5>
+          </li>
+          <li>
+            <p>By <%= session.activity.user.name %> </p>
+          </li>
+          <li>
+            <p>⭐️⭐️⭐️⭐️⭐️</p>
+          </li>
+        </ul>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h1>Class <%= session.activity.name %></h1>
-        <p>By Trainer Name</p>
-        <p>Star Ratings</p>
-        <h2>About Trainer</h2>
-        <P>Stuff about the trainer</P>
-        <h2>About the class</h2>
-        <p>Stuff about the class</p>
-        <p>Date</p>
-        <p>Time</p>
-        <p>Spots Available</p>
+        <p><strong>About <%= session.activity.user.name %></strong></p>
+        <P>Bio: <%= session.activity.user.bio %></P>
+        <p><strong>About the class</strong></p>
+        <p>Description of the class will go here</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <ul style="list-style-type: none;">
+          <li>
+            <p><%= session.start_time.strftime(" %A %e %m %y") %> </p>
+          </li>
+          <li>
+            <p> <%= session.start_time.strftime("%l:%M %p") %> </p>
+          </li>
+          <li>
+            <%= session.min_participants %> / <%= session.max_participants %> spots available</p>
+          </li><p>
+        </ul>
+        <button type="button" class="btn btn-primary">Add for £<%= session.price %></button>
       </div>
     </div>
   </div>

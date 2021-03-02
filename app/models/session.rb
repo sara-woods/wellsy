@@ -1,6 +1,6 @@
 class Session < ApplicationRecord
   belongs_to :activity
-   has_many :bookings
+  has_many :bookings
 
   validates :start_time, presence: true
   validates :end_time, presence: true
