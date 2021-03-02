@@ -1,0 +1,43 @@
+.page-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+
+.footer-container {
+  background-color: $red;
+  height: 130px;
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-inline {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+  margin: 0;
+}
+
+.list-inline > li {
+	display: inline-block;
+  margin: 0 8px;
+  p {
+    font-size: 34px;
+  }
+  a {
+    color: white;
+    &:hover{
+      color: rgb(216, 216, 216);
+    }
+  }
+}
+
+.footer {
+  h3 {
+    font-weight: 700;
+  }
+  padding: 30px 0;
+}
