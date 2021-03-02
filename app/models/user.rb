@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :booked_sessions, through: :bookings, source: :sessions
   has_many :sessions, through: :activities
 
-  validates :trainer, inclusion: [true, false]
+  # validates :trainer, inclusion: [true, false]
   validates :name, presence: true
   validates :zoom_link, :bio, presence: true, if: -> { trainer }
 end
