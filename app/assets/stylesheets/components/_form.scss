@@ -1,4 +1,11 @@
 .form-container  {
   width: 600px;
   margin: 30px auto;
+  padding: 30px;
+  border-radius: $border-radius;
+  h2 {
+    text-align: center;
+    font-weight: 700;
+  }
 }
+
