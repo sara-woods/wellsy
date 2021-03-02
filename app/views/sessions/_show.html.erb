@@ -1,12 +1,10 @@
 <!-- Modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#session-<%= session.id %>">
-  Show Session
-</button>
 
 <div class="modal fade" id="session-<%= session.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+
         <ul style="list-style-type: none;">
           <li>
             <h5 class="modal-title" id="exampleModalLabel">Class: <%= session.activity.name %></h5>
@@ -43,3 +41,5 @@
     </div>
   </div>
 </div>
+
+       
