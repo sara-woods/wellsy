@@ -1,9 +1,13 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $light-gray;
+  width: 100vw;
+  padding-right: 36px;
   h3  {
     margin-bottom: 0;
+    font-weight: 700;
   }
+  
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -12,4 +16,32 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: black;
+  &:hover {
+    color: $red;
+  }
+}
+
+.navbar-home  {
+  background: transparent;
+  position: fixed;
+}
+
+.avatar {
+  margin-left: 10px;
+}
+
+.dropdown-item:hover {
+  background-color: rgb(255, 239, 221);
+  background-color: $light-gray;
+  color: $red;
+}
+
+.dropdown-menu {
+  border:  none;
 }
