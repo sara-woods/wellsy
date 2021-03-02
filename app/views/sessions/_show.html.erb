@@ -16,6 +16,7 @@
             <p>⭐️⭐️⭐️⭐️⭐️</p>
           </li>
         </ul>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -27,7 +28,7 @@
       <div class="modal-footer">
         <ul style="list-style-type: none;">
           <li>
-            <p><%= session.start_time.strftime(" %A %e %m %y") %> </p>
+            <p><%= session.start_time.strftime(" %A %e/%m/%y") %> </p>
           </li>
           <li>
             <p> <%= session.start_time.strftime("%l:%M %p") %> </p>
@@ -43,4 +44,4 @@
   </div>
 </div>
 
-       
+
