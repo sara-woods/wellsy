@@ -1,10 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
 
-  def my_bookings
-    @bookings = current_user.bookings
-    # @session_bookings = current_user.session_bookings
-  end
 
   def my_sessions
     @sessions = current_user.sessions

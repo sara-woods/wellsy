@@ -36,7 +36,8 @@
             <%= session.min_participants %> / <%= session.max_participants %> spots available</p>
           </li><p>
         </ul>
-        <button type="button" class="btn btn-primary">Add for £<%= session.price %></button>
+        <%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary"  %>
+
       </div>
     </div>
   </div>
