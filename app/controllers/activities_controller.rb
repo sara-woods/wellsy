@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
   def index
-    @activities = Activity.all
+    @activities = Activity.where(user: current_user)
   end
 
   def new

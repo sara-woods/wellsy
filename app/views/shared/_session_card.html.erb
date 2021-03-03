@@ -3,12 +3,16 @@
     <div type="button" class="session-card" data-toggle="modal" data-target="#session-<%= session.id %>">
 
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-session-user avatar-large" />
+      
       <div class="card-session-info">
-        <h3><%= session.activity.name %></h3>
-        <h6>by <%= session.activity.user.name %></h6>
-        <p><i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i></p>
-        <br>
-        <p> <%= session.start_time.strftime("%A %d.%m.%y") %> </p>
+        <div class="info-top">
+          <h3><%= session.activity.name %></h3>
+          <h6>by <%= session.activity.user.name %></h6>
+          <p><i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i></p>
+        </div>
+        <div class="info-bottom">
+          <p> <%= session.start_time.strftime("%A %d.%m.%y") %> </p>
+        </div>
       </div>
     
 
