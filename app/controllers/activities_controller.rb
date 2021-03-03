@@ -22,5 +22,5 @@ end
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :description )
+    params.require(:activity).permit(:name, :description, :category_id )
   end
