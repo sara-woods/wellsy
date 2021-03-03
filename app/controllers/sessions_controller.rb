@@ -1,4 +1,4 @@
-B@class SessionsController < ApplicationController
+class SessionsController < ApplicationController
 
 
   def my_bookings
