@@ -1,0 +1,10 @@
+<h2>New session for <%= @activity.name %> </h2>
+  
+  <%= simple_form_for [@activity, @session]  do |f| %>
+    <%= f.input :start_time %>
+    <%= f.input :end_time %>
+    <%= f.input :min_participants %>
+    <%= f.input :price %>
+
+    <%= f.submit "Add",  class: "btn btn-primary"%>
+  <% end %>

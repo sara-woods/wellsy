@@ -6,9 +6,16 @@ class SessionsController < ApplicationController
     @my_past_bookings = current_user.bookings.joins(:session).where("sessions.end_time < ?", DateTime.now).order(start_time: :desc)
   end
 
-
   def index
     @sessions = Session.where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc)
+  end
+
+  def new
+    @session = Session.new
+    @activity = Activity.find(params[:activity_id])
+  end
+
+  def create
   end
 
 
