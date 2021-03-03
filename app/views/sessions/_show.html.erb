@@ -13,20 +13,23 @@
             <h4>by <%= session.activity.user.name %> </h4>
           </li>
           <li>
-            <p>⭐️⭐️⭐️⭐️⭐️</p>
+            <p><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"></i></p>
           </li>
         </ul>
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button> -->
+        <button type="button" class="close" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
       </div>
       <div class="modal-body">
         <div>
           <h4>About <%= session.activity.user.name %><h4>
-          <P>Bio: <%= session.activity.user.bio %></P>
+          <p><%= session.activity.user.bio %></p>
         </div>
         <div>
           <h4>About the class</h4>
-          <p>Description of the class will go here. Why is this in open sans? Need to find out. For now Lorem Ipsum</p>
+          <p>kjkewjfclkmwe;klfl;k fjewjmflkwf jnekj dkjekwdjm</p>
         </div>
       </div>
       <div class="modal-footer">
@@ -41,8 +44,7 @@
             <h4><%= session.min_participants %> / <%= session.max_participants %> spots available</h4>
           </li>
         </ul>
-        <%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary" %>
-
+        <h2><%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary buy" %></h2>
       </div>
     </div>
   </div>
