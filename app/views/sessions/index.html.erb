@@ -16,7 +16,7 @@ filter -->
 <div class="row">
   <% @sessions.each do |session| %>
     <%= render "shared/session_card", session: session, edit: false %>
-    <%= render "sessions/show", session: session %>
+    <%= render "show", session: session %>
   <% end %>
 </div>
 
