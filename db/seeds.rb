@@ -31,9 +31,11 @@ category_array = ["Strength Training", "Gymnastics", "Endurance", "Body Hit", "S
 end
 
 
+activity_name_array = ["Get In Shape", "Yoga Basics", "Triple Tone", "Full Body Circuit", "Yoga Intense", "Full-Body Starter", "Pure Pilates", "Intense Shadow Boxing"]
+
 #activities
-5.times do
-  activity = Activity.new(name: Faker::FunnyName.two_word_name,
+20.times do
+  activity = Activity.new(name: activity_name_array.sample,
               user_id: User.where(trainer: true).pluck(:id).sample,
               description: "Super fun class",
               category_id: Category.pluck(:id).sample)
