@@ -1,11 +1,15 @@
 <div class="banner"  style="background-image: url('https://images.unsplash.com/photo-1470468969717-61d5d54fd036?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2566&q=80')">
   <div class="container-thanks">
     <div class="heading-thanks">
-      <h1 style="text-align: center; background-color: white; opacity: 0.6">Thank you for your booking!</h1>
-      <h1 style="text-align: center; background-color: white; opacity: 0.6">Let's go!</h1>
-      <div>
-        <%= link_to "View all my bookings", my_bookings_path, class: "d-block btn btn-primary"  %>
-        <%= link_to "Continue browsing all our sessions", sessions_path, class: "d-block btn btn-primary"  %>
+      <div style="width: 32%; margin: 1rem">
+      <h1 style="text-align: left; background-color: white; opacity: 0.6"><b>Thank you!</b></h1>
+      <h1 style=" text-align: left; background-color: white; opacity: 0.6"><b>Now, let's get fit!</b></h1>
+      </div>
+      <div style="margin: 1rem">
+        <%= link_to "View all my bookings", my_bookings_path, class: "btn btn-primary"  %>
+      </div>
+      <div style="margin: 1rem">
+        <%= link_to "Back to sessions", sessions_path, class: "btn btn-primary"  %>
       </div>
     </div>
   </div>
