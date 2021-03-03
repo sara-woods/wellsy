@@ -17,7 +17,7 @@ Category.destroy_all
               email: Faker::Internet.email,
               password: "123456",
               trainer: [true, false].sample,
-              bio: "Hello I am a trainer, and this is stuff about moi",
+              bio: "Hello I am a trainer, and this is stuff about moi. I like lifting Cheeseburgers",
               zoom_link: "zoom.us"
               )
 end
@@ -35,7 +35,7 @@ end
 5.times do
   activity = Activity.new(name: Faker::FunnyName.two_word_name,
               user_id: User.where(trainer: true).pluck(:id).sample,
-              description: "Super fun class",
+              description: "Super fun class. Will make you sweat like theres no tomorrow. Put down that Cheeseburger!",
               category_id: Category.pluck(:id).sample)
   activity.save!
 end
