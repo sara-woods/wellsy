@@ -37,11 +37,18 @@
 }
 
 .dropdown-item:hover {
-  background-color: rgb(255, 239, 221);
-  background-color: $light-gray;
+  background-color: $cream;
   color: $red;
 }
 
 .dropdown-menu {
   border:  none;
+  background-color: $light-gray;
+
 }
+
+.dropdown-item  {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
