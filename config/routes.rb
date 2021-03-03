@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   get :thank_you, to: "pages#thank_you"
 
+  resources :activities, only: [:index]
 
 end
