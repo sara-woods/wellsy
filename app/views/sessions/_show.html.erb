@@ -1,53 +1,57 @@
 <!-- Modal -->
+    <div class="modal fade" id="session-<%= session.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
 
-<div class="modal fade" id="session-<%= session.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+            <ul style="list-style-type: none;">
+              <li>
+                <h5 class="modal-title" id="exampleModalLabel"><%= session.activity.name %></h5>
+              </li>
 
-        <ul style="list-style-type: none;">
-          <li>
-            <h5 class="modal-title" id="exampleModalLabel"><%= session.activity.name %></h5>
-          </li>
-          <li>
-            <h4>by <%= session.activity.user.name %> </h4>
-          </li>
-          <li>
-            <p><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"></i></p>
-          </li>
-        </ul>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button> -->
-        <button type="button" class="close" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button>
-      </div>
-      <div class="modal-body">
-        <div>
-          <h4>About <%= session.activity.user.name %><h4>
-          <p><%= session.activity.user.bio %></p>
+              <li>
+                <h4>by <%= session.activity.user.name %> </h4>
+              </li>
+              <li>
+                <p><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"></i></p>
+              </li>
+            </ul>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <h4>About <%= session.activity.user.name %><h4>
+              <p><%= session.activity.user.bio %></p>
+            </div>
+            <div>
+              <h4>About the class</h4>
+              <p><%= session.activity.description %></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <ul style="list-style-type: none;">
+              <li>
+                <p class="modal-date"><%= session.start_time.strftime(" %A %d.%m.%Y") %> </p>
+              </li>
+              <li>
+                <h2> <%= session.start_time.strftime("%l:%M %p") %> </h2>
+              </li>
+              <li>
+                <h2 class="participants"> <%= session.min_participants %> / <%= session.max_participants %> available </h2>
+              </li>
+            </ul>
+            <h2><%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary buy" %></h2>
+          </div>
         </div>
-        <div>
-          <h4>About the class</h4>
-          <p>kjkewjfclkmwe;klfl;k fjewjmflkwf jnekj dkjekwdjm</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <ul style="list-style-type: none;">
-          <li>
-            <h6><%= session.start_time.strftime(" %A %d/%m/%Y") %> </h6>
-          </li>
-          <li>
-            <h3> <%= session.start_time.strftime("%l:%M %p") %> </h3>
-          </li>
-          <li>
-            <h4><%= session.min_participants %> / <%= session.max_participants %> spots available</h4>
-          </li>
-        </ul>
-        <h2><%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary buy" %></h2>
       </div>
     </div>
-  </div>
-</div>
+
+
+  
+  
 
 
