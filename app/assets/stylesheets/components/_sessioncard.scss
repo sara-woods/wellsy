@@ -14,7 +14,7 @@
   align-items: center;
   max-width: 800px;
   height: 161px;
-  margin: 16px auto;
+  margin: 8px auto;
   background: white;
   border-radius: 4px;
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
@@ -26,6 +26,7 @@
     text-decoration: none;
   }
   h3 {
+    font-size: 24px;
     font-weight: 700;
     padding: 0;
     margin-bottom: 4px;
@@ -51,9 +52,13 @@
 
 .card-session-info {
   padding: 0 16px;
+  height: 100%;
   flex-grow: 1;
   padding-bottom: 10px;
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
  .card-session-time {
