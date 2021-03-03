@@ -8,4 +8,15 @@ class Session < ApplicationRecord
   validates :max_participants, presence: true
   validates :min_participants, presence: true
   validates :price, presence: true
+
+  validate :class_size
+
+  private
+
+  def class_size
+    if min_participants > max_participants
+      errors.add(:min_participants, "cannot exceed # of max participants") 
+    end
+  end
+
 end

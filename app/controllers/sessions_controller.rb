@@ -16,7 +16,21 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @session = Session.new(session_params)
+    @activity = Activity.find(params[:activity_id])
+    @session.activity = @activity
+
+    if @session.save
+      redirect_to activities_path(@session)
+    else
+      render :new
+    end
   end
 
+  private
+
+  def session_params
+    params.require(:session).permit(:min_participants, :max_participants, :price, :start_time, :end_time)
+  end
 
 end
