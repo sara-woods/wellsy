@@ -7,37 +7,41 @@
 
         <ul style="list-style-type: none;">
           <li>
-            <h5 class="modal-title" id="exampleModalLabel">Class: <%= session.activity.name %></h5>
+            <h5 class="modal-title" id="exampleModalLabel"><%= session.activity.name %></h5>
           </li>
           <li>
-            <p>By <%= session.activity.user.name %> </p>
+            <h4>by <%= session.activity.user.name %> </h4>
           </li>
           <li>
             <p>⭐️⭐️⭐️⭐️⭐️</p>
           </li>
         </ul>
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
       </div>
       <div class="modal-body">
-        <p><strong>About <%= session.activity.user.name %></strong></p>
-        <P>Bio: <%= session.activity.user.bio %></P>
-        <p><strong>About the class</strong></p>
-        <p>Description of the class will go here</p>
+        <div>
+          <h4>About <%= session.activity.user.name %><h4>
+          <P>Bio: <%= session.activity.user.bio %></P>
+        </div>
+        <div>
+          <h4>About the class</h4>
+          <p>Description of the class will go here. Why is this in open sans? Need to find out. For now Lorem Ipsum</p>
+        </div>
       </div>
       <div class="modal-footer">
         <ul style="list-style-type: none;">
           <li>
-            <p><%= session.start_time.strftime(" %A %e/%m/%y") %> </p>
+            <h6><%= session.start_time.strftime(" %A %d/%m/%Y") %> </h6>
           </li>
           <li>
-            <p> <%= session.start_time.strftime("%l:%M %p") %> </p>
+            <h3> <%= session.start_time.strftime("%l:%M %p") %> </h3>
           </li>
           <li>
-            <%= session.min_participants %> / <%= session.max_participants %> spots available</p>
-          </li><p>
+            <h4><%= session.min_participants %> / <%= session.max_participants %> spots available</h4>
+          </li>
         </ul>
-        <%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary"  %>
+        <%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary" %>
 
       </div>
     </div>
