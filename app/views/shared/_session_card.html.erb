@@ -1,10 +1,10 @@
 <div class="col-12">
-  <div class="session-card">
-    <div type="button" class="card-session" data-toggle="modal" data-target="#session-<%= session.id %>">
+  
+    <div type="button" class="session-card" data-toggle="modal" data-target="#session-<%= session.id %>">
 
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-session-user avatar-large" />
       <div class="card-session-info">
-        <h2><%= session.activity.name %></h2>
+        <h3><%= session.activity.name %></h3>
         <h6>by <%= session.activity.user.name %></h6>
         <p><i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i></p>
         <br>
@@ -30,5 +30,5 @@
       </div>
 
     </div>
-  </div>
+  
 </div>
