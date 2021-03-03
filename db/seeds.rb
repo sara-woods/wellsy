@@ -8,7 +8,7 @@
 Booking.destroy_all
 Session.destroy_all
 Activity.destroy_all
-User.destroy_all
+# User.destroy_all
 Category.destroy_all
 
 #users
@@ -41,12 +41,21 @@ end
 end
 
 
+
 #sessions
 10.times do
-  Session.create!(min_participants: rand(1..5), max_participants: rand(8..10), start_time: DateTime.now,
-  end_time: Date.new(2021, 5, 12),
+  starttime = (((DateTime.now - 10.days)..(DateTime.now + 10.days)).to_a.sample + rand(24).hours).change(min:0)
+  Session.create!(min_participants: rand(1..5), max_participants: rand(8..10), start_time: starttime,
+  end_time: starttime + 1.hour,
     price: rand(5..20), activity_id: Activity.pluck(:id).sample, confirmed: false)
 end
+
+
+
+
+
+
+
 
 
 #bookings

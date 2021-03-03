@@ -1,10 +1,25 @@
 
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-  background-color: $red;
-  color: white;
+  background-color: $light-gray;
+  border: none;
+  margin-bottom: -3px;
+  color: $red;
+  font-weight: 700;
 }
 
 .nav-tabs .nav-link {
-  border-radius: 5px;
+  border-radius: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: $red;
+  border: none;
+  color: white;
+}
+
+.tab-pane {
+  background-color: $light-gray;
+  padding: 24px 24px;
+}
+
+.nav-tabs {
+  border-bottom: none;
 }
