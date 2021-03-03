@@ -1,5 +1,4 @@
 .card-session {
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,80 +9,64 @@
   justify-content: space-between;
   text-align: right;
   flex-direction: column;
-  height: 189px;
+  height: 160px;
   width: 30%;
 }
+
 .session-card {
-  width: 90%;
   max-width: 700px;
   margin: 16px auto;
   background: white;
-  padding-bottom: 5px;
-  padding-top: 10px;
+  padding-bottom: 8px;
+  padding-top: 8px;
   padding-left: 30px;
   padding-right: 30px;
   border-radius: 4px;
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
-  position: relative;
-
-
-  display: flex;
-  align-items: center;
-
 
   p {
     margin: 0;
   }
-  span {
-    font-weight: 700;
-    margin-top: 20px;
-  }
   a:hover {
     text-decoration: none;
   }
-
-h2 {
-  font-weight: bold;
-
+  h2 {
+    font-weight: 700;
+    padding: 0;
+    margin-bottom: 4px;
+  }
+  p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+  }
+  h6 {
+    margin-bottom: 0;
+  }
 }
 
 
-h4 {
-  font-size: 20px;
-
-}
-
-
-
-}
-
-
-.session-card .card-session-info{
-  padding: 16px;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: flex-end;
-  align-items: flex-end;
+.card-session-info {
+  padding: 0 16px;
+  flex-grow: 1;
 }
 
  .card-session-time {
-  position: absolute;
-  right: 37px;
-  top: 37px;
-
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
 }
 
 
  .participants {
-  font-size: 12px;
-  font-weight: lighter;
-  color: gray;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: gray;
+    padding-right: 8px;
   }
 
-   .numbers {
-  position: absolute;
-  right: 37px;
-  bottom: 37px;
+  .fa-star  {
+    color: gray;
+    font-size: 14px;
   }
 
 
