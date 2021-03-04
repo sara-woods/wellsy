@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "my_bookings", to: "sessions#my_bookings"
   get :thank_you, to: "pages#thank_you"
 
-  
+
 
   resources :sessions, only: [:index] do
     resources :bookings, only: [:create]
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
 
-  
+  resources :users, only: [:show]
 
   resources :activities, only: [:index]
 

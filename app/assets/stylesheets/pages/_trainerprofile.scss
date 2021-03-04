@@ -1,0 +1,55 @@
+.container {
+  padding: 20px 120px 20px 120px;
+}
+
+.profile-banner {
+  background-color: #F4F4F2;
+  position: relative;
+  padding: 100px 0px 20px 0px;
+  h1 {
+    font-weight: 700;
+  }
+  h2, p {
+    text-align: left;
+  }
+
+  img {
+    height: 210px;
+    width: 210px;
+    position: absolute;
+    right: 150px;
+    bottom: -100px;
+    border: 5px;
+  }
+}
+
+.profile-body {
+  padding: 60px 0px 0px 0px;
+  h2 {
+    font-weight: 700;
+    text-align: left;
+  }
+}
+
+.btn-profile {
+  padding: 0px 0px 40px 0px;
+  .btnprofile {
+    background-color: #35393C;
+    padding: 10px 60px 10px 60px;
+    margin: 0px;
+  }
+}
+
+.profile-cards {
+  display: flex;
+}
+
+// $red: #E54E2F;
+// $blue: #167FFB;
+// $yellow: #FFC65A;
+// $orange: #E67E22;
+// $green: #1EDD88;
+// $gray: #0E0000;
+// $light-gray: #F4F4F2;
+// $cream: #FFFEFC;
+// $dark-gray: #35393C;
