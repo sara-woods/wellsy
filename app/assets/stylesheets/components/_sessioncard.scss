@@ -88,12 +88,40 @@
   }
 
   .image-holder {
+    position: relative;
     width: 150px;
     height: 100%;
     background-position: center;
     background-size: cover;
     margin-left: 16px;
+    p {
+      font-size: 10px;
+    }
   }
+
+  .category-tag {
+    span {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #3FAEFF;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+      color: white;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
   @media only screen and (max-width: 730px) {
     .session-card {
