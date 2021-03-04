@@ -7,7 +7,9 @@
       <div class="card-session-info">
         <div class="info-top">
           <h3><%= session.activity.name %></h3>
-          <h6>by <%= session.activity.user.name %></h6>
+          <%= link_to user_path(session.activity.user), class:"trainer-link" do%>
+            <h6>by <%= session.activity.user.name %></h6>
+          <% end %>
           <p><i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i></p>
         </div>
         <div class="info-bottom">

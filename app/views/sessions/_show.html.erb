@@ -10,7 +10,9 @@
               </li>
 
               <li>
+              <%= link_to user_path(session.activity.user), class:"trainer-modal-link" do %>
                 <h4>by <%= session.activity.user.name %> </h4>
+              <% end %>
               </li>
               <li>
                 <p><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"></i></p>
@@ -23,6 +25,7 @@
             </button>
           </div>
           <div class="modal-body">
+          <p class="modal-category-tag"><span><%= session.activity.category.name.upcase %></span></p>
             <div>
               <h4>About <%= session.activity.user.name %><h4>
               <p><%= session.activity.user.bio %></p>
