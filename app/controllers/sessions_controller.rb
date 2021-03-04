@@ -29,6 +29,27 @@ class SessionsController < ApplicationController
     end
   end
 
+  def edit
+    @session = Session.find(params[:id])
+    if @session.empty?
+      @session = Session.find(params[:id])
+    else
+      flash[:notice] = 'Session cannot be edited when session has been booked'
+      redirect_to activities_path
+    end
+  end
+
+  def update
+    @session = Session.find(params[:id])
+    @session.update(session_params)
+    if @session.save
+      redirect_to activities_path
+    else
+      render :edit
+    end
+  end
+
+
   def destroy
     @session = Session.find(params[:id])
     
@@ -36,7 +57,7 @@ class SessionsController < ApplicationController
       flash[:notice] = 'Session was deleted'
       @session.destroy
     else
-      flash[:notice] = 'Can\'t delete session when session have been booked'
+      flash[:notice] = 'Can\'t delete session when session has been booked'
     end
     redirect_to activities_path
   end

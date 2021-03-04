@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
-  resources :sessions, only: [:destroy]
+  resources :sessions, only: [:destroy, :edit, :update]
 
 end
