@@ -36,15 +36,17 @@
         </div>
 
 
-      <div class="session-dropdown d-none" id="<%= dom_id(activity)%>">
+    <div class="session-dropdown d-none" id="<%= dom_id(activity)%>">
         <% activity.sessions.each do |session| %>
+      <div type="button" class="session-card" data-toggle="modal" data-target="#activity-<%= activity.id %>">
           <%= render "shared/session_card", session: session, review: false %>
+          <div type="button" class="session-card" data-toggle="modal" data-target="#activity-<%= activity.id %>">
+            <%= render "attendees", activity: activity %>
+         </div>
         <% end %>
       </div>
-
-
-
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>
+
