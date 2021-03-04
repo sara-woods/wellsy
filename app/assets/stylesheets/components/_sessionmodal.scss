@@ -60,6 +60,9 @@
   }
   ul {
     margin: 0;
+    li h2 {
+      text-align: left;
+    }
   }
   .participants {
     margin:  0;
@@ -102,7 +105,6 @@
   }
     color: white;
 }
-
 
 
 // $orange: #E67E22;
