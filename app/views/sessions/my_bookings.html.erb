@@ -27,7 +27,11 @@
 
         <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
           <% @my_past_bookings.each do |booking| %>
-            <%= render "shared/session_card", session: booking.session, review: true, trainer: false %>
+            <% if booking.attended %>
+              <%= render "shared/session_card", session: booking.session, review: true, trainer: false %>
+            <% else %>         
+              <%= render "shared/session_card", session: booking.session, review: false, trainer: false %>
+            <% end %>
           <% end %>
         </div>
 
