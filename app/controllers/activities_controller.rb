@@ -17,10 +17,34 @@ class ActivitiesController < ApplicationController
       render :new
     end
   end
-end
+
+
+
+
+
+  def destroy
+    @activity = Activity.find(params[:id])
+    sum = 0
+    @activity.sessions.each do |session|
+      if !session.empty?
+        sum += 1
+      end
+    end
+
+    if sum == 0
+      flash[:notice] = 'Activity was deleted'
+      @activity.destroy
+    else
+      flash[:notice] = 'Can\'t delete activity when sessions have been booked'
+    end
+    redirect_to activities_path
+  end
+
 
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :description, :category_id )
+    params.require(:activity).permit(:name, :description, :category_id)
   end
+
+end
