@@ -29,6 +29,18 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    @session = Session.find(params[:id])
+    
+    if @session.empty?
+      flash[:notice] = 'Session was deleted'
+      @session.destroy
+    else
+      flash[:notice] = 'Can\'t delete session when session have been booked'
+    end
+    redirect_to activities_path
+  end
+
   private
 
   def session_params
