@@ -16,8 +16,10 @@
         </button>
       </div>
       <div class="modal-body">
-         <% @booking.users.each do |activity| %>
-         <h4>by <%= bookings.user.name %> </h4>
+        <% session.attendees.each do |attendee| %>
+        <p><%= attendee.name %><p>
+        <% end %>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>

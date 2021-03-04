@@ -6,6 +6,16 @@ class BookingsController < ApplicationController
     @sessions = current_user.sessions
   end
 
+
+  # def missed
+  #    @booking = Booking.find(params[:booking_id])
+  #    if @booking.attended
+  #      #attended
+  #     #users booking boolean true
+  #   else
+  #     #user boolean false
+  # end
+
   def create
     @session = Session.find(params[:session_id])
     @booking = Booking.new
