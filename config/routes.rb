@@ -21,6 +21,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :activities, only: [:index]
+  # resources :activities, only: [:index, :destroy]
 
 end
