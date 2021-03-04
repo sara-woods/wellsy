@@ -8,13 +8,13 @@
         <%= f.input :end_time, as: :datetime, html5:  true %>
         <div class="row">
           <div class="col-6">
-            <%= f.input :max_participants, collection: 1..20 %>
-          </div>
-          <div class="col-6">
             <%= f.input :min_participants, collection: 1..20 %>
           </div>
+          <div class="col-6">
+            <%= f.input :max_participants, collection: 1..20 %>
+          </div>
         </div>
-        <%= f.input :price %>
+        <%= f.input :price, label: "Price (£)" %>
         <div class="form-actions">
           <%= f.submit "Add",  class: "btn btn-primary"%>
         </div>
