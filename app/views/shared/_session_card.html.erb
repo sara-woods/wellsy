@@ -27,6 +27,21 @@
           </div>
         <% end %>
 
+        <% if trainer %>
+          <div class="controls">
+            <ul class="list-inline">
+            <%# <! –– link to correct action!! ––> %>
+              <%= link_to new_activity_session_path(session.activity) do %> 
+                <li class="list-inline-item"><i class="fas fa-trash-alt"></i></li>
+              <% end %>
+            <%# <! –– link to correct action!! ––> %>
+              <%= link_to new_activity_session_path(session.activity) do %> 
+                <li class="list-inline-item"><i class="fas fa-edit"></i></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
         <div class="numbers">
           <h2><span class="participants"> <%= session.min_participants %> / <%= session.max_participants %> available </span>
                       £<%= session.price %> </h2>
