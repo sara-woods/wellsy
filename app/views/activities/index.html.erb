@@ -37,7 +37,7 @@
       
       <div class="session-dropdown d-none" id="<%= dom_id(activity)%>">
         <% activity.sessions.each do |session| %>
-          <%= render "shared/session_card", session: session, edit: false %>
+          <%= render "shared/session_card", session: session, review: false %>
         <% end %>
       </div>
       
