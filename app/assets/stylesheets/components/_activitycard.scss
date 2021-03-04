@@ -1,5 +1,5 @@
 .activity-card {
-  margin: 16px 0;
+  // margin: 16px 0;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -24,7 +24,7 @@
 
 .category-tag-activity {
   position: absolute;
-  bottom: 20px;
+  bottom: 16px;
   left: 16px;
   span {
     top: 10px;
@@ -41,6 +41,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 30%;
 }
 
 .activity-right {
@@ -48,6 +49,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 30%;
+  align-items: flex-end;
 }
 
 
@@ -67,4 +70,13 @@
 .session-dropdown {
   background-color: $light-gray;
   padding: 10px 0;
+}
+
+.sessions-button {
+  height: 40px;
+  align-self: flex-end;
+}
+
+.btn-session{
+  width: 50%;
 }

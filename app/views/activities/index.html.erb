@@ -6,19 +6,19 @@
       <div class="mb-3 trainer-dashboard-heading">
         <h2 class="d-inline-block">Activities</h2>
         <% if current_user.trainer %>
-          <%= link_to "Add new activity", "/activities/new", class: "btn btn-primary ml-5" %>
+          <%= link_to "Add new activity", "/activities/new", class: "btn btn-primary ml-3" %>
         <% end %>
       </div>
 
       <% @activities.each do |activity| %>
-        <div class="activity-card">
+        <div class="activity-card mt-3">
           <div class="activity-left">
             <h4><%= activity.name %></h4>
-            <button class="sessions-button btn btn-dark" data-activity-id="<%= dom_id(activity) %>">My sessions <i class="fas fa-sort-down"></i></button>
             <p class="category-tag-activity"><span><%= activity.category.name.upcase %></span></p>
           </div>
+          <button class="sessions-button btn btn-dark" data-activity-id="<%= dom_id(activity) %>">My sessions <i class="fas fa-sort-down"></i></button>
           <div class="activity-right">
-            <%= link_to "New session", new_activity_session_path(activity), class: "btn btn-primary"  %>
+            <%= link_to "New session", new_activity_session_path(activity), class: "btn btn-primary btn-session"  %>
             <div class="controls">
               <ul class="list-inline">
               <%# <! –– link to correct action!! ––> %>
