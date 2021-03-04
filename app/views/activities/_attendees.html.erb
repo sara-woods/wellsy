@@ -16,10 +16,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Picture - User name - toggle</p>
-        <p>Picture - User name - toggle</p>
-        <p>Picture - User name - toggle</p>
-        <p>Picture - User name - toggle</p>
+         <% @booking.users.each do |activity| %>
+         <h4>by <%= bookings.user.name %> </h4>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
