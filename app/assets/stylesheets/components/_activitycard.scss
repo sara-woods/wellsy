@@ -73,10 +73,15 @@
 }
 
 .sessions-button {
-  height: 40px;
+  height: 38px;
+  width: 135px;
   align-self: flex-end;
 }
 
 .btn-session{
-  width: 50%;
+  width: 135px;
+}
+
+.left-header {
+  display: flex;
 }
