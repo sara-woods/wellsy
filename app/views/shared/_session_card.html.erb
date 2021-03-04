@@ -45,7 +45,7 @@
         <% end %>
 
         <div class="numbers">
-          <h2><span class="participants"> <%= session.min_participants %> / <%= session.max_participants %> available </span>
+          <h2><span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
                       £<%= session.price %> </h2>
         </div>
       </div>

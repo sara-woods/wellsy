@@ -44,7 +44,7 @@
                 <h2> <%= session.start_time.strftime("%l:%M %p") %> </h2>
               </li>
               <li>
-                <h2 class="participants"> <%= session.min_participants %> / <%= session.max_participants %> available </h2>
+                <h2 class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </h2>
               </li>
             </ul>
             <h2><%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary buy" %></h2>
