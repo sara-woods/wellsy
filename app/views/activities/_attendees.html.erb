@@ -17,9 +17,11 @@
       </div>
       <div class="modal-body">
         <% session.attendees.each do |attendee| %>
-        <p><%= attendee.name %><p>
-        <% end %>
-
+        <div class="session-card">
+             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-session-user avatar-large" />
+             <p><%= attendee.name %><p>
+        </div>
+       <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
