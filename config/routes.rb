@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:index] do
     resources :bookings, only: [:create]
+    get "bookings/:id/missed", to: "bookings#missed"
   end
 
   resources :bookings, only: [:destroy]
@@ -18,9 +19,6 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create]
   end
 
-
   resources :users, only: [:show]
-
-  # resources :activities, only: [:index, :destroy]
 
 end
