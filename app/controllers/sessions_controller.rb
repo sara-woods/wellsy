@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
   def index
     # @sessions = Session.where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc)
     @sessions = Session.all
+
   end
 
   def new

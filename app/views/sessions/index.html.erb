@@ -15,7 +15,7 @@ filter -->
 <!-- sessions listed -->
 <div class="row">
   <% @sessions.each do |session| %>
-    <%= render "shared/session_card", session: session, edit: false %>
+    <%= render "shared/session_card", session: session, review: false %>
     <%= render "show", session: session %>
   <% end %>
 </div>

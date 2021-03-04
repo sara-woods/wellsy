@@ -1,9 +1,9 @@
 <div class="col-12">
-  
+
     <div type="button" class="session-card" data-toggle="modal" data-target="#session-<%= session.id %>">
 
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-session-user avatar-large" />
-      
+
       <div class="card-session-info">
         <div class="info-top">
           <h3><%= session.activity.name %></h3>
@@ -14,16 +14,16 @@
           <p> <%= session.start_time.strftime("%A %d.%m.%y") %> </p>
         </div>
       </div>
-    
+
 
       <div class="rhs-holder">
         <div class="card-session-time">
           <p> <%= session.start_time.strftime("%I:%M %p") %> </p>
         </div>
 
-        <% if edit %>
-          <div class="button-row">
-            <button>delete</button>
+        <% if review %>
+          <div class="btn btn-primary">
+            Review
           </div>
         <% end %>
 
@@ -34,8 +34,9 @@
       </div>
 
       <div class="image-holder" style="background-image: url('https://source.unsplash.com/random');">
+          <p class="category-tag"><span><%= session.activity.category.name.upcase %></span></p>
       </div>
 
     </div>
-  
+
 </div>
