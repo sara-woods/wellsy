@@ -3,7 +3,7 @@
 }
 
 .profile-banner {
-  background-color: #F4F4F2;
+  background-color: $light-gray;
   position: relative;
   padding: 60px 0px 0px 0px;
   h1 {
@@ -25,12 +25,19 @@
 
 .profile-body {
   padding: 30px 0px 30px 0px;
-  h2 {
+  #bio {
     font-weight: 700;
     text-align: left;
   }
 }
 
+#trainer-header-1 {
+  margin-bottom: 8px;
+}
+
+#trainer-header-2 {
+  margin: 0;
+}
 
 
 
