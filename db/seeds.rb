@@ -10,6 +10,7 @@ Session.destroy_all
 Activity.destroy_all
 # User.destroy_all
 Category.destroy_all
+User.destroy_all
 
 bio_array = [
             " BS in Physical Education as well as a MS in Exercise Science and Health Promotion. He is a Certified Strength and Conditioning Specialist (CSCS). He has a background in health and fitness as well as athletic performance training with over 20 years of certification and experience in the field. His passion for fitness began through his love of sports and developed as a varsity athlete in basketball.",
@@ -27,7 +28,7 @@ bio_array = [
               email: Faker::Internet.email,
               password: "123456",
               trainer: [true, false].sample,
-              bio: User.create!(bio: bio_array.sample),
+              bio: bio_array.sample,
               zoom_link: "zoom.us 19xLS"
               )
 end
@@ -60,7 +61,7 @@ description_array = [
 20.times do
   activity = Activity.new(name: activity_name_array.sample,
               user_id: User.where(trainer: true).pluck(:id).sample,
-              description: Activity.create!(description: description_array.sample)
+              description: description_array.sample,
               category_id: Category.pluck(:id).sample)
   activity.save!
 end
@@ -74,13 +75,6 @@ end
   end_time: starttime + 1.hour,
     price: rand(5..20), activity_id: Activity.pluck(:id).sample, confirmed: false)
 end
-
-
-
-
-
-
-
 
 
 #bookings
