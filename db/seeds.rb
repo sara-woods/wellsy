@@ -37,10 +37,6 @@ end
 #categories
 category_array = ["Endurance", "Yoga", "Strength Training", "Aerobics", "Bands", "Body Hit", "Pilates", "Shadow Boxing", "Core Workout"]
 
-# 5.times do
-#   category = Category.create!(name: category_array.sample)
-# end
-
 
 activity_name_array = ["Get In Shape", "Yoga Basics", "Triple Tone", "Full Body Circuit", "Intense Bands", "Full-Body Starter", "Pure Pilates", "Intense Shadow Boxing", "Let's Core"]
 
@@ -56,15 +52,6 @@ description_array = [
                     " For full-body fitness, row is all you need to know. Dive in the deep end with a hardcore workout that tightens up your technique, perfects pacing and helps you unlock your body’s natural biomechanical speed. Sure, we like to get a bit sciencey. But with expert instructors to guide you, you won’t be without a paddle.",
                     " Build the strength to smash life, without the incredible bulk. This is all about control: precise movements that stretch and tone to improve your posture, increase your flexibility and reinforce your core. You know what they say. Hit the mat and you’ll never go back."
                     ]
-
-#activities
-# 20.times do
-#   activity = Activity.new(name: activity_name_array.sample,
-#               user_id: User.where(trainer: true).pluck(:id).sample,
-#               description: description_array.sample,
-#               category_id: Category.pluck(:id).sample)
-#   activity.save!
-# end
 
 
 # categories new
