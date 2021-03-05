@@ -1,3 +1,4 @@
+
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-12">
@@ -19,16 +20,19 @@
               <div class="controls">
                 <ul class="list-inline">
                 <%# <! –– link to correct action!! ––> %>
-                  <%= link_to new_activity_session_path(activity) do %> 
+                  <%= link_to activity_path(activity), method: :delete, data: { confirm: "Are you sure?"} do %>
                     <li class="list-inline-item"><i class="fas fa-trash-alt"></i></li>
                   <% end %>
+                    
+                  
                 <%# <! –– link to correct action!! ––> %>
-                  <%= link_to new_activity_session_path(activity) do %> 
+                  <%= link_to edit_activity_path(activity) do %> 
                     <li class="list-inline-item"><i class="fas fa-edit"></i></li>
                   <% end %>
                 </ul>
               </div>            
             </div>
+            <p id="description"><%= activity.description %></p>
             <p class="category-tag-activity"><span><%= activity.category.name.upcase %></span></p>
           </div>
 
@@ -39,11 +43,14 @@
             <button class="sessions-button btn btn-dark" data-activity-id="<%= dom_id(activity) %>">My sessions <i class="fas fa-sort-down"></i></button>
           </div>
         </div>
-      
-      
+
+
       <div class="session-dropdown d-none" id="<%= dom_id(activity)%>">
         <% activity.sessions.each do |session| %>
-          <%= render "shared/session_card", session: session, trainer: true, review: false %>
+          <div type="button"  data-toggle="modal" data-target="#activity-<%= activity.id %>">
+            <%= render "shared/session_card", session: session, trainer: true, review: false %>
+          </div>
+          <%= render "attendees", activity: activity, session: session %>        
         <% end %>
         
         <% if activity.sessions.empty? %>
@@ -51,10 +58,8 @@
         <% end %>
         
       </div>
-      
-
-
     <% end %>
     </div>
   </div>
 </div>
+

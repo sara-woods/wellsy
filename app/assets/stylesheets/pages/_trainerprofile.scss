@@ -1,48 +1,46 @@
 .container {
-  padding: 20px 120px 20px 120px;
+  padding: 20px 50px 20px 50px;
 }
 
 .profile-banner {
-  background-color: #F4F4F2;
+  background-color: $light-gray;
   position: relative;
-  padding: 100px 0px 20px 0px;
+  padding: 60px 0px 0px 0px;
   h1 {
+    text-align: left;
     font-weight: 700;
   }
   h2, p {
     text-align: left;
   }
-
   img {
     height: 210px;
     width: 210px;
     position: absolute;
-    right: 150px;
+    left: 65%;
     bottom: -100px;
     border: 5px;
   }
 }
 
 .profile-body {
-  padding: 60px 0px 0px 0px;
-  h2 {
+  padding: 30px 0px 30px 0px;
+  #bio {
     font-weight: 700;
     text-align: left;
   }
 }
 
-.btn-profile {
-  padding: 0px 0px 40px 0px;
-  .btnprofile {
-    background-color: #35393C;
-    padding: 10px 60px 10px 60px;
-    margin: 0px;
-  }
+#trainer-header-1 {
+  margin-bottom: 8px;
 }
 
-.profile-cards {
-  display: flex;
+#trainer-header-2 {
+  margin: 0;
 }
+
+
+
 
 // $red: #E54E2F;
 // $blue: #167FFB;

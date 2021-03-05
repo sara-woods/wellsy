@@ -5,11 +5,17 @@ filter -->
 
 
 <!-- sessions listed -->
-<div class="row">
-  <% @sessions.each do |session| %>
-    <%= render "shared/session_card", session: session, review: false, trainer: false %>
-    <%= render "show", session: session %>
-  <% end %>
+<div class="container mb-5 mt-5">
+  <h1>Choose your next workout</h1>
+
+
+  <div class="row">
+    <% @sessions.each do |session| %>
+      <%= render "shared/session_card", session: session, review: false, trainer: false %>
+      <%= render "show", session: session %>
+    <% end %>
+  </div>
+
 </div>
 
 

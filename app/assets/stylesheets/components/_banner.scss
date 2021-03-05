@@ -3,4 +3,17 @@
   background-position: top;
   padding: 150px 0;
   height: 100vh;
+  .heading {
+    margin-top: 100px;
+    width: 700px;
+    margin-left: 100px;
+    .home-header {
+      font-weight: 900;
+      font-size: 64px;
+      text-align: left;
+      line-height: 1.1;
+    }
+  }
+  
 }
+

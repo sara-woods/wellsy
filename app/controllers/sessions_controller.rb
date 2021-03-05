@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
 
 
   def my_bookings
@@ -7,8 +8,9 @@ class SessionsController < ApplicationController
   end
 
   def index
-  #   @sessions = Session.where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc)
-      @sessions = Session.all
+    # @sessions = Session.where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc)
+    @sessions = Session.all
+
   end
 
   def new
@@ -26,6 +28,39 @@ class SessionsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @session = Session.find(params[:id])
+    if @session.empty?
+      @session = Session.find(params[:id])
+    else
+      flash[:notice] = 'Session cannot be edited when session has been booked'
+      redirect_to activities_path
+    end
+  end
+
+  def update
+    @session = Session.find(params[:id])
+    @session.update(session_params)
+    if @session.save
+      redirect_to activities_path
+    else
+      render :edit
+    end
+  end
+
+
+  def destroy
+    @session = Session.find(params[:id])
+    
+    if @session.empty?
+      flash[:notice] = 'Session was deleted'
+      @session.destroy
+    else
+      flash[:notice] = 'Can\'t delete session when session has been booked'
+    end
+    redirect_to activities_path
   end
 
   private

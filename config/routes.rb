@@ -7,18 +7,20 @@ Rails.application.routes.draw do
   get :thank_you, to: "pages#thank_you"
   get :my_profile, to: "pages#my_profile"
 
-
   resources :sessions, only: [:index] do
     resources :bookings, only: [:create]
   end
 
   resources :bookings, only: [:destroy]
+  patch "bookings/:id/missed", to: "bookings#missed", as: :missed
 
   resources :activities do
     resources :sessions, only: [:new, :create]
   end
 
   resources :users, only: [:show]
+
+  resources :sessions, only: [:destroy, :edit, :update]
 
 
 end
