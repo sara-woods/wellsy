@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "open-uri"
+
 Booking.destroy_all
 Session.destroy_all
 Activity.destroy_all
@@ -22,24 +25,33 @@ bio_array = [
             ]
 
 
+user_images = ["https://images.unsplash.com/photo-1597347343908-2937e7dcc560?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+"https://images.unsplash.com/flagged/photo-1566064352554-f36ef0ef23b2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
+"https://images.unsplash.com/photo-1529516548873-9ce57c8f155e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
+"https://images.unsplash.com/photo-1518609571773-39b7d303a87b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
+"https://images.unsplash.com/photo-1544972917-3529b113a469?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
+"https://images.unsplash.com/flagged/photo-1566063698649-9df11f39ba51?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+"https://images.unsplash.com/photo-1534368420009-621bfab424a8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+"https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80",
+"https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"]
+
+
 #users
 10.times do
-  User.create!(name: Faker::Name.name,
+  user = User.new(name: Faker::Name.name,
               email: Faker::Internet.email,
               password: "123456",
               trainer: [true, false].sample,
               bio: bio_array.sample,
               zoom_link: "zoom.us 19xLS"
               )
+              user.photo.attach(io: URI.open(user_images.sample), filename: 'nes.png', content_type: 'image/png')
+              user.save!
 end
 
 
 #categories
 category_array = ["Endurance", "Yoga", "Strength Training", "Aerobics", "Bands", "Body Hit", "Pilates", "Shadow Boxing", "Core Workout"]
-
-# 5.times do
-#   category = Category.create!(name: category_array.sample)
-# end
 
 
 activity_name_array = ["Get In Shape", "Yoga Basics", "Triple Tone", "Full Body Circuit", "Intense Bands", "Full-Body Starter", "Pure Pilates", "Intense Shadow Boxing", "Let's Core"]
@@ -56,15 +68,6 @@ description_array = [
                     " For full-body fitness, row is all you need to know. Dive in the deep end with a hardcore workout that tightens up your technique, perfects pacing and helps you unlock your body’s natural biomechanical speed. Sure, we like to get a bit sciencey. But with expert instructors to guide you, you won’t be without a paddle.",
                     " Build the strength to smash life, without the incredible bulk. This is all about control: precise movements that stretch and tone to improve your posture, increase your flexibility and reinforce your core. You know what they say. Hit the mat and you’ll never go back."
                     ]
-
-#activities
-# 20.times do
-#   activity = Activity.new(name: activity_name_array.sample,
-#               user_id: User.where(trainer: true).pluck(:id).sample,
-#               description: description_array.sample,
-#               category_id: Category.pluck(:id).sample)
-#   activity.save!
-# end
 
 
 # categories new

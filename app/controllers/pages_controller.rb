@@ -6,4 +6,8 @@ class PagesController < ApplicationController
 
   def thank_you
   end
+
+  def my_profile
+  end
+
 end
