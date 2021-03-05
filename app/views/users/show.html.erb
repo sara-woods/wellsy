@@ -1,7 +1,7 @@
 <div class="profile-banner">
   <div class="container">
-    <h1>Trainer Profile</h1>
-    <h2><%= @user.name %></h2>
+    <h1 id="trainer-header-1">Trainer Profile</h1>
+    <h2 id="trainer-header-2"><%= @user.name %></h2>
     <p><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"></i></p>
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
   </div>
@@ -9,10 +9,10 @@
 
 <div class="profile-body">
   <div class="container">
-    <h2>Bio</h2>
+    <h2 id="bio">Bio</h2>
     <p><%= @user.bio %></p>
     <div class="pt-3">
-<!--       <h3>Sessions</h3> -->
+
       <% if @sessions.blank? %>
         There are no sessions planned yet
       <% end %>
