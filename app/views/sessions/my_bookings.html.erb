@@ -2,8 +2,8 @@
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-12">
-        <h2>My dashboard</h2>
-        <h4 class="mb-3">Bookings</h4>
+        <h1>My dashboard</h1>
+        <h2 class="mb-3">Bookings</h2>
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -20,14 +20,18 @@
 
         <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
           <% @my_upcoming_bookings.each do |booking| %>
-              <%= render "shared/session_card", session: booking.session, edit: false %>
+              <%= render "shared/session_card", session: booking.session, review: false, trainer: false %>
           <% end %>
         </div>
 
 
         <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
           <% @my_past_bookings.each do |booking| %>
-            <%= render "shared/session_card", session: booking.session, edit: false %>
+            <% if booking.attended %>
+              <%= render "shared/session_card", session: booking.session, review: true, trainer: false %>
+            <% else %>         
+              <%= render "shared/session_card", session: booking.session, review: false, trainer: false %>
+            <% end %>
           <% end %>
         </div>
 

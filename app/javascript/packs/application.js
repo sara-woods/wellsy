@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import { showTeacherInput } from "../components/show_teacher_input";
+import { showSessions } from "../components/show_sessions";
 
 
 // Internal imports, e.g:
@@ -34,4 +35,5 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   showTeacherInput();
+  showSessions();
 });

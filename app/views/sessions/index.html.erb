@@ -1,11 +1,3 @@
-
-<!-- link only to check if it's all working
-
-TO BE ADDED to all sessions -->
-
-
-
-
 <!-- search results
 choose the right class for you
 filter -->
@@ -15,7 +7,7 @@ filter -->
 <!-- sessions listed -->
 <div class="row">
   <% @sessions.each do |session| %>
-    <%= render "shared/session_card", session: session, edit: false %>
+    <%= render "shared/session_card", session: session, review: false, trainer: false %>
     <%= render "show", session: session %>
   <% end %>
 </div>

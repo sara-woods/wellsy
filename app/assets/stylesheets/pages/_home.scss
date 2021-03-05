@@ -1,10 +1,26 @@
 // Specific CSS for your home-page
+.container  {
+  h2 {
+    text-align: center;
+    // font-weight: 700;
+  }
+  h4 {
+    font-weight: 700;
+  }
+  h1 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  margin-bottom: 30px;
+}
 
 .heading {
   margin-top: 100px;
-  h1 {
+  .home-header {
     font-weight: 900;
     font-size: 64px;
+    text-align: left;
   }
 }
 
@@ -12,13 +28,4 @@
   background-color: $cream;
 }
 
-.container  {
-  h2 {
-    text-align: center;
-    font-weight: 700;
-  }
-  h4 {
-    font-weight: 700;
-  }
-}
 

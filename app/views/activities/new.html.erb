@@ -1,11 +1,17 @@
 <div class="form-container">
-<h2 class="text-center">New Activity</h2>
-  <div class="info-holder lightgreen-bg">
-    <%= simple_form_for @activity do |f| %>
-      <%= f.association :category %>
-      <%= f.input :name %>
-      <%= f.input :description %>
-      <%= f.submit "Add activity", class: "btn btn-primary" %>
-    <% end %>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+      <h2 class="text-center">New Activity</h2>
+      <div class="info-holder lightgreen-bg">
+        <%= simple_form_for @activity do |f| %>
+          <%= f.association :category %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <div class="form-actions">
+            <%= f.submit "Add activity", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

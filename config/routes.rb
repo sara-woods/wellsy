@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get :my_profile, to: "pages#my_profile"
 
 
-
   resources :sessions, only: [:index] do
     resources :bookings, only: [:create]
   end
@@ -19,9 +18,7 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create]
   end
 
+  resources :users, only: [:show]
 
-
-
-  resources :activities, only: [:index]
 
 end
