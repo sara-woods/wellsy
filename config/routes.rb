@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get "my_bookings", to: "sessions#my_bookings"
   get :thank_you, to: "pages#thank_you"
-
+  get :my_profile, to: "pages#my_profile"
 
   resources :sessions, only: [:index, :edit] do
     resources :bookings, only: [:create]
@@ -22,6 +22,5 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
-  
 
 end

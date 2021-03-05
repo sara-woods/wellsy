@@ -14,17 +14,25 @@
         <li class="nav-item active">
           <%= link_to "BROWSE SESSIONS", "/sessions", class: "nav-link" %>
         </li>
-        
+
         <% if current_user.trainer %>
           <li class="nav-item">
             <%= link_to "NEW ACTIVITY", "/activities/new", class: "nav-link" %>
           </li>
         <% end %>
-        
+
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if current_user.respond_to?(:photo) && current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% else %>
+              <%= image_tag "https://www.flaticon.com/svg/vstatic/svg/1077/1077012.svg?token=exp=1614954764~hmac=76e9615bb3a4c458cb55613887b29fe4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          
+
+          <% if current_user %>
+            <%= link_to "My profile","/my_profile", class: "dropdown-item" %>
+          <% end %>
+
           <% if current_user.trainer %>
             <%= link_to "My dashboard", "/activities", class: "dropdown-item" %>
           <% end %>
