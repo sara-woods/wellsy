@@ -18,7 +18,13 @@
       <div class="modal-body">
         <% session.attendees.each do |attendee| %>
         <div class="session-card">
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-session-user avatar-large" />
+        
+          <% if session.activity.user.respond_to?(:photo) && session.activity.user.photo.attached? %>
+            <%= cl_image_tag session.activity.user.photo.key, class: "card-session-user avatar-large", height: 100, width: 100, crop: :fill, id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+          <% else %>
+            <%= image_tag "https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png", class: "avatar-large  dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+          
           <p><%= attendee.name %><p>
           <% if session.end_time > DateTime.now %>
             <% booking = attendee.bookings.find_by(session: session)  %>
