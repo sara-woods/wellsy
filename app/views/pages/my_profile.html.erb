@@ -3,9 +3,9 @@
     <div class="d-flex justify-content-center align-items-center flex-column">
       <h1>Your info</h1>
       <% if current_user.respond_to?(:photo) && current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, class: "avatar-large  dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar-large  dropdown-toggle", height: 100, width: 100, crop: :fill, id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
       <% else %>
-        <%= image_tag "https://www.flaticon.com/svg/vstatic/svg/1077/1077012.svg?token=exp=1614954764~hmac=76e9615bb3a4c458cb55613887b29fe4", class: "avatar-large  dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <%= image_tag "https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png", class: "avatar-large  dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <% end %>
       <h2><%= current_user.name %></h2>
       <%= link_to "Edit your profile", edit_user_registration_path, class: "btn btn-primary mt-5 " %>
