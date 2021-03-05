@@ -7,14 +7,11 @@ class BookingsController < ApplicationController
   end
 
 
-  # def missed
-  #    @booking = Booking.find(params[:booking_id])
-  #    if @booking.attended
-  #      #attended
-  #     #users booking boolean true
-  #   else
-  #     #user boolean false
-  # end
+  def missed
+    @booking = Booking.find(params[:id])
+    @booking.attended = !@booking.attended
+    @booking.save
+  end
 
   def create
     @session = Session.find(params[:session_id])

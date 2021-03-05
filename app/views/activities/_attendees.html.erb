@@ -18,10 +18,16 @@
       <div class="modal-body">
         <% session.attendees.each do |attendee| %>
         <div class="session-card">
-             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-session-user avatar-large" />
-             <p><%= attendee.name %><p>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-session-user avatar-large" />
+          <p><%= attendee.name %><p>
+          <% if session.end_time < DateTime.now %>
+            <% booking = attendee.bookings.find_by(session: session)  %>
+            <%= simple_form_for booking, url: missed_path(booking), remote: true do |f| %>
+              <%= f.input :attended, as: :boolean, checked_value: true, unchecked_value: false, input_html: { class: "toggle", checked: booking.attended, onchange: 'this.form.submit();'} , label: "Attended" %>
+            <% end %>
+          <% end %>
         </div>
-       <% end %>
+     <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
@@ -29,3 +35,5 @@
     </div>
   </div>
 </div>
+
+

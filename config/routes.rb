@@ -7,13 +7,12 @@ Rails.application.routes.draw do
   get :thank_you, to: "pages#thank_you"
 
 
-
   resources :sessions, only: [:index] do
     resources :bookings, only: [:create]
-    get "bookings/:id/missed", to: "bookings#missed"
   end
 
   resources :bookings, only: [:destroy]
+  patch "bookings/:id/missed", to: "bookings#missed", as: :missed
 
   resources :activities do
     resources :sessions, only: [:new, :create]
