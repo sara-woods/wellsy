@@ -35,14 +35,14 @@ end
 
 
 #categories
-category_array = ["Strength Training", "Gymnastics", "Endurance", "Body Hit", "Spin", "Shadow Boxing", "Yoga", "Pilates", "Bands", "Core Workout"]
+category_array = ["Endurance", "Yoga", "Strength Training", "Aerobics", "Bands", "Body Hit", "Pilates", "Shadow Boxing", "Core Workout"]
 
-5.times do
-  category = Category.create!(name: category_array.sample)
-end
+# 5.times do
+#   category = Category.create!(name: category_array.sample)
+# end
 
 
-activity_name_array = ["Get In Shape", "Yoga Basics", "Triple Tone", "Full Body Circuit", "Yoga Intense", "Full-Body Starter", "Pure Pilates", "Intense Shadow Boxing"]
+activity_name_array = ["Get In Shape", "Yoga Basics", "Triple Tone", "Full Body Circuit", "Intense Bands", "Full-Body Starter", "Pure Pilates", "Intense Shadow Boxing", "Let's Core"]
 
 description_array = [
                     " Grab your weapons. Whether you wage war with ropes, sandbells or kettlebells, this is a workout for true warriors. We’re talking peak power, epic endurance and hardcore HIIT for aspiring athletes, fitness fanatics and first-timers alike. Get practicing your battle cry. It’s about to go down.",
@@ -58,11 +58,27 @@ description_array = [
                     ]
 
 #activities
-20.times do
-  activity = Activity.new(name: activity_name_array.sample,
+# 20.times do
+#   activity = Activity.new(name: activity_name_array.sample,
+#               user_id: User.where(trainer: true).pluck(:id).sample,
+#               description: description_array.sample,
+#               category_id: Category.pluck(:id).sample)
+#   activity.save!
+# end
+
+
+# categories new
+category_array.each do |category|
+  category = Category.create!(name: category)
+end
+
+
+#activities new
+activity_name_array.each_with_index do |activity_name, i|
+   activity = Activity.new(name: activity_name,
               user_id: User.where(trainer: true).pluck(:id).sample,
               description: description_array.sample,
-              category_id: Category.pluck(:id).sample)
+              category_id: Category.find_by_name(category_array[i]).id)
   activity.save!
 end
 
