@@ -41,6 +41,7 @@
           <div class="activity-right">
             <%= link_to "New session", new_activity_session_path(activity), class: "btn btn-primary btn-session"  %>
             <button class="sessions-button btn btn-dark" data-activity-id="<%= dom_id(activity) %>">My sessions <i class="fas fa-sort-down"></i></button>
+            <p id="upcoming-sessions"><%= activity.sessions.where("sessions.end_time >= ?", DateTime.now).count %> sessions coming up</p>
           </div>
         </div>
 

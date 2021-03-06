@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def index
+    # Remember to change this back to only future ssessions showing on index instead of all
     # @sessions = Session.where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc)
     @sessions = Session.all
 

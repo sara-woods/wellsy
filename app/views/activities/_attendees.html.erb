@@ -19,8 +19,8 @@
         <% session.attendees.each do |attendee| %>
         <div class="session-card">
         
-          <% if session.activity.user.respond_to?(:photo) && session.activity.user.photo.attached? %>
-            <%= cl_image_tag session.activity.user.photo.key, class: "card-session-user avatar-large", height: 100, width: 100, crop: :fill, id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+          <% if attendee.respond_to?(:photo) && attendee.photo.attached? %>
+            <%= cl_image_tag attendee.photo.key, class: "card-session-user avatar-large", height: 100, width: 100, crop: :fill, id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
           <% else %>
             <%= image_tag "https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png", class: "avatar-large  dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
