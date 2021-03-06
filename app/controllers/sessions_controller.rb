@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
     # Remember to change this back to only future ssessions showing on index instead of all
     # @sessions = Session.where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc)
     @sessions = Session.all
-
   end
 
   def new
@@ -19,11 +18,17 @@ class SessionsController < ApplicationController
     @activity = Activity.find(params[:activity_id])
   end
 
+
+
   def create
-    @session = Session.new(session_params)
+    @duration = params[:other][:duration].to_i
+    @end_time = params[:session][:start_time].to_datetime + @duration.minutes
+    @session = Session.new(max_participants: session_params[:max_participants], min_participants: session_params[:min_participants], price: session_params[:price], start_time: session_params[:start_time], end_time: @end_time)
+     
+    # @session = Session.new(session_params)
     @activity = Activity.find(params[:activity_id])
     @session.activity = @activity
-
+    
     if @session.save
       redirect_to activities_path(@session)
     else
@@ -67,7 +72,7 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:min_participants, :max_participants, :price, :start_time, :end_time)
+    params.require(:session).permit(:min_participants, :max_participants, :price, :start_time, :end_time, :duration)
   end
 
 end

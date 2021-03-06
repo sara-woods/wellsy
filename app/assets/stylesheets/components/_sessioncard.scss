@@ -18,6 +18,7 @@
   background: white;
   border-radius: 4px;
   box-shadow: 5px 5px 5px rgba(0,0,0,.1);
+  transition: all 0.2s linear;
 
   a:hover {
     text-decoration: none;
@@ -27,6 +28,7 @@
     font-weight: 700;
     padding: 0;
     margin-bottom: 4px;
+    transition: all 0.2s linear;
   }
   p {
     font-family: 'Montserrat', sans-serif;
@@ -35,6 +37,7 @@
   }
   h6 {
     margin-bottom: 0;
+    font-weight: 300;
   }
   &:hover {
     box-shadow: 5px 5px 25px rgba(0,0,0,.1);

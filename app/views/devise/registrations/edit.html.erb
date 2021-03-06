@@ -1,36 +1,52 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="form-container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+      <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :photo, label:"Upload your picture", as: :file, input_html: { multiple: false } %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+
+          <%= f.input :password,
+                      hint: "Leave it blank if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+
+           <% if current_user.trainer %>
+            <%= f.input :bio, label: "About me", placeholder: "I have been a Certified Personal Trainer since 2017 and previously worked as a Personal Trainer at the University of Maryland. Hope to use my knowledge to spread and improve health and wellness! "  %>
+            <%= f.input :zoom_link, label: "My personal Zoom link", placeholder: "https://zoom.us/......."  %>
+           <% end %>
+            
+
+
+
+          <%= f.input :current_password,
+                      hint: "We need your current password to confirm your changes",
+                      required: true,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :photo, label:"Edit my profile picture", as: :file, input_html: { multiple: false } %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Update", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <h4>Cancel my account</h4>
+
+      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+      <%= link_to "Back", my_profile_path %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
