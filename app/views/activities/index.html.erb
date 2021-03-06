@@ -44,17 +44,17 @@
       <div class="session-dropdown d-none" id="<%= dom_id(activity)%>">
         <ul class="nav nav-tabs trainer-tab" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active trainer-tab" id="home-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">Upcoming</button>
+            <button class="nav-link active trainer-tab" id="home-tab" data-bs-toggle="tab" data-bs-target="#upcoming<%= dom_id(activity)%>" type="button" role="tab" aria-controls="upcoming" aria-selected="true">Upcoming</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link trainer-tab" id="contact-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">Past</button>
+            <button class="nav-link trainer-tab" id="contact-tab" data-bs-toggle="tab" data-bs-target="#past<%= dom_id(activity)%>" type="button" role="tab" aria-controls="past" aria-selected="false">Past</button>
           </li>
         </ul>
 
 
         <div class="tab-content" id="myTabContent">
 
-          <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+          <div class="tab-pane fade show active" id="upcoming<%= dom_id(activity)%>" role="tabpanel" aria-labelledby="upcoming-tab">
             <% if activity.sessions.where("sessions.end_time >= ?", DateTime.now).empty? %>
               <p class="text-center">No upcoming sessions available</p>
             <% end %>
@@ -64,7 +64,7 @@
           </div>
         
 
-          <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">      
+          <div class="tab-pane fade" id="past<%= dom_id(activity)%>" role="tabpanel" aria-labelledby="past-tab">      
             <% if activity.sessions.where("sessions.end_time < ?", DateTime.now).empty? %>
               <p class="text-center">No past sessions available</p>
             <% else %>
