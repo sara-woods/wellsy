@@ -1,0 +1,17 @@
+.session-card.attendee {
+  height: 80px;
+
+  img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+  }
+  p {
+    text-align: left;
+    font-weight: 700;
+  }
+}
+
+.modal-footer.attendee {
+  padding: 20px 40px;
+}
