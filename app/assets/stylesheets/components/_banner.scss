@@ -5,15 +5,28 @@
   height: 100vh;
   .heading {
     margin-top: 100px;
-    width: 700px;
+    // width: 700px;
     margin-left: 100px;
     .home-header {
       font-weight: 700;
-      font-size: 64px;
+      font-size: 34px;
       text-align: left;
       line-height: 1.1;
+      color: $red;
     }
   }
-  
+}
+
+#power {
+  font-size: 700;
+  font-style: italic;
+  font-size: 120px;
+  color: rgb(235, 229, 224);
+  margin-bottom: 20px;
+}
+
+#header-p {
+  font-size: 24px;
+  font-weight: 300;
 }
 
