@@ -87,7 +87,7 @@ description_array = [
 categories.each do |category, url|
   file = URI.open(url)
   category = Category.new(name: category)
-  category.photo.attach(io: file, filename: 'nes.png', content_type: 'image/jpeg')
+  category.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   category.save
 end
 
