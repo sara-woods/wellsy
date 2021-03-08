@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= "navbar-home" if params[:action] == "home" %>">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= "navbar-home" if params[:action] == "home" || params[:action] == "thank_you" %>">
   <%= link_to root_path, class: "navbar-brand" do %>
     <h3 class = "logo" >WELLSY</h3>
   <% end %>
