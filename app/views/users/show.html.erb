@@ -2,9 +2,26 @@
   <div class="container">
     <h1 id="trainer-header-1">Trainer Profile</h1>
     <h2 id="trainer-header-2"><%= @user.name %></h2>
-    <p><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"></i></p>
+
+    <div class="show-rating">
+           <% if @user.average_rating == 0 %>
+              <p id="no-rating">No rating yet</p>
+             <%# <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p> %>
+           <% else %>
+            <div class="d-flex justify-content-start  align-items-end">
+              <% @user.average_rating.round.times do %>
+                <p><i class='fas fa-star'></i></p> 
+              <% end %>
+              <% (5 - @user.average_rating).round.times do %>
+                <p><i class='far fa-star'></i></p> 
+              <% end %>
+              <p id="average"><%= @user.average_rating %></p>
+            </div>
+          <% end %>
+    </div>
+
     <% if @user.respond_to?(:photo) && @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, class: "card-session-user avatar-large", height: 100, width: 100, crop: :fill, id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+      <%= cl_image_tag @user.photo.key, class: "card-session-user avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
     <% else %>
       <%= image_tag "https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png", class: "avatar-large  dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <% end %>
@@ -15,18 +32,48 @@
   <div class="container">
     <h2 id="bio">About</h2>
     <p><%= @user.bio %></p>
-    <div class="pt-3">
+    
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">Upcoming sessions</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</button>
+      </li>
+    </ul>
 
-      <% if @sessions.blank? %>
-        There are no sessions planned yet
-      <% end %>
-      <div class="row profilecard">
-        <% @sessions.each do |session| %>
-          <%= render "shared/session_card", session: session, review: false, trainer: false %>
-          <%= render "sessions/show", session: session %>
-        <% end %>
+    <div class="tab-content" id="myTabContent">
+
+      <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+        <div class="pt-3">
+          <% if @sessions.blank? %>
+            There are no sessions planned yet
+          <% end %>
+          <div class="row profilecard">
+            <% @sessions.each do |session| %>
+              <%= render "shared/session_card", session: session, review: false, trainer: false, zoom: false %>
+              <%= render "sessions/show", session: session %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="review-tab">
+        <% if @number_of_reviews.zero? %>
+          <p class="text-center">This trainer has no reviews yet</p>
+        <% else %>
+          <% @all_sessions.each do |session| %>
+            <% session.reviews.order(created_at: :desc).each do |review| %>
+              <%= render "shared/review_card", review: review, session: session %>
+            <% end %>
+          <% end %>            
+        <% end %>      
       </div>
     </div>
+
+
+
   </div>
 </div>
 

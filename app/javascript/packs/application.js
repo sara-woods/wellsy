@@ -26,6 +26,8 @@ require("channels")
 import "bootstrap";
 import { showTeacherInput } from "../components/show_teacher_input";
 import { showSessions } from "../components/show_sessions";
+import { initTypewriter } from "../plugins/init_typewriter";
+import { initStarRating } from '../plugins/init_star_rating';
 
 
 // Internal imports, e.g:
@@ -36,6 +38,8 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   showTeacherInput();
   showSessions();
+  initTypewriter();
+  initStarRating();
 });
 
 

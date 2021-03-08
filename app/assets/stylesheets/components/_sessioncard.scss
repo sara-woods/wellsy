@@ -86,7 +86,7 @@
 }
 
 .fa-star  {
-  color: rgb(212, 212, 212);
+  color: rgb(173, 173, 173);
   font-size: 14px;
 }
 
@@ -142,8 +142,19 @@
   width: 134px;
   padding-top: 5px
 }
- 
 
+#no-rating  {
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+  color: gray;
+}
+ 
+#average {
+  margin-left: 4px;
+  font-size: 14px;
+  padding-bottom: 2px;
+}
 
 
 @media only screen and (max-width: 730px) {

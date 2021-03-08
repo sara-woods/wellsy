@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   put "/sessions_update/:id", to: "sessions#update", as: :session_update
   delete "/sessions_delete/:id", to: "sessions#destroy", as: :session_delete
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => :registrations }
+  
   root to: 'pages#home'
   get "my_bookings", to: "sessions#my_bookings"
   get :thank_you, to: "pages#thank_you"
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:index, :edit] do
     resources :bookings, only: [:create]
+    resources :reviews, only: [:new, :create]
   end
 
   resources :bookings, only: [:destroy]
@@ -23,9 +25,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  # after editing profile info, redirect back to my_profile
-  # as :user do
-  #   get '/my_profile', :to => 'devise/registrations#edit', :as => :user_root
-  # end
+
 
 end

@@ -5,7 +5,7 @@
 
 
       <% if session.activity.user.respond_to?(:photo) && session.activity.user.photo.attached? %>
-        <%= cl_image_tag session.activity.user.photo.key, class: "card-session-user avatar-large", height: 100, width: 100, crop: :fill, id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+        <%= cl_image_tag session.activity.user.photo.key, class: "card-session-user avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
       <% else %>
         <%= image_tag "https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png", class: "avatar-large  dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <% end %>
@@ -13,10 +13,27 @@
       <div class="card-session-info">
         <div class="info-top">
           <h3><%= session.activity.name %></h3>
-
+          <%= link_to user_path(session.activity.user), class: "trainer-link" do %>
             <h6>by <%= session.activity.user.name %></h6>
-
-          <p><i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i></p>
+          <% end %>
+          
+           
+           <% if session.activity.user.average_rating == 0 %>
+              <p id="no-rating">No rating yet</p>
+             <%# <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p> %>
+           <% else %>
+            <div class="d-flex justify-content-start  align-items-end">
+              <% session.activity.user.average_rating.round.times do %>
+                <p><i class='fas fa-star'></i></p> 
+              <% end %>
+              <% (5 - session.activity.user.average_rating).round.times do %>
+                <p><i class='far fa-star'></i></p> 
+              <% end %>
+              <p id="average"><%= session.activity.user.average_rating %></p>
+            </div>
+          <% end %>
+                    
+          
         </div>
         <div class="info-bottom">
           <p> <%= session.start_time.strftime("%A %d.%m.%y") %> </p>
@@ -30,34 +47,40 @@
           <p id="duration"> <%= ((session.end_time - session.start_time) / 60).round %> min </p>
         </div>
 
-        <% if review %>
-          <div class="btn btn-primary">
-            Review
-          </div>
-        <% end %>
+
 
         <% if trainer %>
           <div class="controls">
             <ul class="list-inline">
-              <%= link_to session_delete_path(session), method: :delete, data: { confirm: "Are you sure?"} do %> 
+              <%= link_to session_delete_path(session), method: :delete, data: { confirm: "Are you sure?"} do %>
                 <li class="list-inline-item"><i class="fas fa-trash-alt"></i></li>
               <% end %>
-              <%= link_to edit_session_path(session) do %> 
+              <%= link_to edit_session_path(session) do %>
                 <li class="list-inline-item"><i class="fas fa-edit"></i></li>
               <% end %>
             </ul>
           </div>
         <% end %>
 
-        <div class="numbers">
-          <h2>
-            <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
-                      £<%= session.price %>
-          </h2>
-        </div>
+
+        <% if zoom %>
+          <%# Change the  paths to the correct  paths %>
+          <%= link_to "Open in Zoom", edit_session_path(session), class: "btn btn-primary" %>
+          <%= link_to "Add to Google calendar", edit_session_path(session), class: "btn btn-dark" %>
+        <% elsif review %>
+            <%= link_to "Review", new_session_review_path(session), class: "btn btn-primary" %>
+        <% else %>
+          <div class="numbers">
+            <h2>
+              <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
+                        £<%= session.price %>
+            </h2>
+          </div>
+        <% end %>
+
       </div>
 
-      <div class="image-holder" style="background-image: url('https://source.unsplash.com/random');">
+      <div class="image-holder" style="background-image: url(<%= url_for(session.activity.category.photo) %>)">
           <p class="category-tag"><span><%= session.activity.category.name.upcase %></span></p>
       </div>
 

@@ -1,0 +1,30 @@
+<div class="review-card">
+  <div class="d-flex justify-content-between align-items-start">
+    <div class="d-flex justify-content-start align-items-start">
+      <% if review.user.respond_to?(:photo) && review.user.photo.attached? %>
+        <%= cl_image_tag review.user.photo.key, class: "card-session-user avatar-small mr-3 mb-2", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+      <% else %>
+        <%= image_tag "https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png", class: "avatar-small dropdown-toggle mb-2 mr-3", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
+
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-column align-items-start">
+          <h6><%= review.user.name %></h6>
+          <div class="d-flex justify-content-start">
+            <% review.rating.round.times do %>
+              <p><i class='fas fa-star'></i></p> 
+            <% end %>
+            <% (5 - review.rating.round).times do %>
+              <p><i class='far fa-star'></i></p> 
+            <% end %>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <p id="review-date">Feb. 12 2020</p>
+  </div>
+  
+  <h5><%= session.activity.name %></h5>
+  <%= review.content %> 
+</div>

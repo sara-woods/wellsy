@@ -59,7 +59,7 @@
             <% end %>
             <% activity.sessions.where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc).each do |session| %>
              <div type="button"  data-toggle="modal" data-target="#upcomming-activity-<%= activity.id %>">
-              <%= render "shared/session_card", session: session, trainer: true, review: false %>
+              <%= render "shared/session_card", session: session, trainer: true, review: false, zoom: false %>
             </div>
               <%= render "attendees", attendees: "upcomming", activity: activity, session: session %>
             <% end %>
@@ -74,10 +74,10 @@
             <% end %>
 
             <% activity.sessions.where("sessions.end_time < ?", DateTime.now).order(start_time: :desc).each do |session| %>
-            <div type="button"  data-toggle="modal" data-target="#past-activity-<%= activity.id %>">
-              <%= render "shared/session_card", session: session, trainer: false, review: false %>
-            </div>
-            <%= render "attendees", attendees: "past", activity: activity, session: session %>
+              <div type="button"  data-toggle="modal" data-target="#past-activity-<%= activity.id %>">
+                <%= render "shared/session_card", session: session, trainer: false, review: false, zoom: false %>
+              </div>
+              <%= render "attendees", attendees: "past", activity: activity, session: session %>
             <% end %>
           </div>
 
