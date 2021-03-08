@@ -4,7 +4,7 @@
       <h2 class="text-center">New Activity</h2>
       <div class="info-holder lightgreen-bg">
         <%= simple_form_for [@session, @review] do |f| %>
-          <%= f.input :rating %>
+          <%= f.input :rating, collection: 1..5 %>
           <%= f.input :content %>
           <div class="form-actions">
             <%= f.submit "Add review", class: "btn btn-primary" %>
