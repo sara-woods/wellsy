@@ -25,7 +25,13 @@ class User < ApplicationRecord
         average_rating += review.rating
       end
     end
-    average_rating = average_rating / count
+    
+    if count == 0
+      return 0
+    else
+      return average_rating = (average_rating.to_f / count).round(1)
+    end
   end
+
 
 end
