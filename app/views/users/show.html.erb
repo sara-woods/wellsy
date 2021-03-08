@@ -4,7 +4,7 @@
     <h2 id="trainer-header-2"><%= @user.name %></h2>
     <p><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"></i></p>
     <% if @user.respond_to?(:photo) && @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, class: "card-session-user avatar-large", height: 100, width: 100, crop: :fill, id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+      <%= cl_image_tag @user.photo.key, class: "card-session-user avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
     <% else %>
       <%= image_tag "https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png", class: "avatar-large  dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <% end %>
@@ -22,7 +22,7 @@
       <% end %>
       <div class="row profilecard">
         <% @sessions.each do |session| %>
-          <%= render "shared/session_card", session: session, review: false, trainer: false %>
+          <%= render "shared/session_card", session: session, review: false, trainer: false, zoom: false %>
           <%= render "sessions/show", session: session %>
         <% end %>
       </div>

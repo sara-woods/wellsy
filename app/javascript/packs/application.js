@@ -27,6 +27,8 @@ import "bootstrap";
 import { showTeacherInput } from "../components/show_teacher_input";
 import { showSessions } from "../components/show_sessions";
 import { initTypewriter } from "../plugins/init_typewriter";
+import { initStarRating } from '../plugins/init_star_rating';
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -37,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   showTeacherInput();
   showSessions();
   initTypewriter();
+  initStarRating();
 });
