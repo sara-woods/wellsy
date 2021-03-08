@@ -41,3 +41,6 @@ document.addEventListener('turbolinks:load', () => {
   initTypewriter();
   initStarRating();
 });
+
+
+const myCallBack = (event) => { console.log(event) }
