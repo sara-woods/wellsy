@@ -16,7 +16,7 @@
       </div>
 
       <div class="modal-body">
-        <% session.attendees.each do |attendee| %>
+        <% session.attendees.reverse.each do |attendee| %>
           <div class="session-card attendee  justify-content-between align-items-center">
 
             <div class="d-flex justify-content-start align-items-center">
@@ -32,10 +32,12 @@
             <div id="attendee-controls">
               <% booking = attendee.bookings.find_by(session: session)  %>
               <%= simple_form_for booking, url: missed_path(booking), remote: true do |f| %>
-                <%= f.input :attended, as: :boolean, checked_value: true, unchecked_value: false, input_html: { class: "toggle", checked: booking.attended, onchange: 'this.form.submit();'}, label: "Attended" %>
+                <%= f.input :attended, as: :boolean, checked_value: true, unchecked_value: false, input_html: { id: "attended_#{booking.id}", class: "toggle-attendee", checked: booking.attended, onchange: "event.currentTarget.parentElement.parentElement.parentElement.submit()"}, label: "Attended" %>
               <% end %>
+
             </div>
           <%end%>
+
 
           </div>
         <% end %>

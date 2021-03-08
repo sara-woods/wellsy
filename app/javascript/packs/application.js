@@ -37,3 +37,6 @@ document.addEventListener('turbolinks:load', () => {
   showTeacherInput();
   showSessions();
 });
+
+
+const myCallBack = (event) => { console.log(event) }
