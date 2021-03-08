@@ -2,7 +2,7 @@ class Session < ApplicationRecord
   belongs_to :activity
   has_many :bookings, dependent: :destroy
   has_many :attendees, through: :bookings, source: :user
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   validates :start_time, presence: true
   validates :end_time, presence: true
