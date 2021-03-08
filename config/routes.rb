@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:index, :edit] do
     resources :bookings, only: [:create]
+    resources :reviews, only: [:new, :create]
   end
 
   resources :bookings, only: [:destroy]
@@ -24,9 +25,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  # after editing profile info, redirect back to my_profile
-  # as :user do
-  #   get '/my_profile', :to => 'devise/registrations#edit', :as => :user_root
-  # end
+
 
 end
