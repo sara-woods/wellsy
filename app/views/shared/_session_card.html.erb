@@ -39,17 +39,17 @@
         <% if trainer %>
           <div class="controls">
             <ul class="list-inline">
-              <%= link_to session_delete_path(session), method: :delete, data: { confirm: "Are you sure?"} do %> 
+              <%= link_to session_delete_path(session), method: :delete, data: { confirm: "Are you sure?"} do %>
                 <li class="list-inline-item"><i class="fas fa-trash-alt"></i></li>
               <% end %>
-              <%= link_to edit_session_path(session) do %> 
+              <%= link_to edit_session_path(session) do %>
                 <li class="list-inline-item"><i class="fas fa-edit"></i></li>
               <% end %>
             </ul>
           </div>
         <% end %>
 
-        
+
         <% if zoom %>
           <%# Change the  paths to the correct  paths %>
           <%= link_to "Open in Zoom", edit_session_path(session), class: "btn btn-primary" %>
@@ -62,10 +62,10 @@
             </h2>
           </div>
         <% end %>
-        
+
       </div>
 
-      <div class="image-holder" style="background-image: url('https://source.unsplash.com/random');">
+      <div class="image-holder" style="background-image: url(<%= url_for(session.activity.category.photo) %>)">
           <p class="category-tag"><span><%= session.activity.category.name.upcase %></span></p>
       </div>
 

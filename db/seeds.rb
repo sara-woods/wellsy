@@ -5,13 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-<<<<<<< HEAD
-require "open-uri"
-=======
+
 
 require "open-uri"
 
->>>>>>> 30e84571cda70e20272cd6ccd4974b9b28b32866
 Booking.destroy_all
 Session.destroy_all
 Activity.destroy_all
@@ -102,6 +99,8 @@ categories.each do |category, url|
   category.save
 end
 
+   # category.photo.attach(io: URI.open(categories), filename: 'nes.png', content_type: 'image/png')
+   #            category.save!
 
 #activities new
 activity_name_array.each_with_index do |activity_name, i|
