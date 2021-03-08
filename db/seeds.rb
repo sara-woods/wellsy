@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 require "open-uri"
 
 Booking.destroy_all
@@ -54,6 +55,22 @@ end
 category_array = ["Endurance", "Yoga", "Strength Training", "Aerobics", "Bands", "Body Hit", "Pilates", "Shadow Boxing", "Core Workout"]
 
 
+categories = {
+  "Endurance": "https://images.unsplash.com/photo-1434596922112-19c563067271?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  "Yoga": "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1226&q=80",
+  "Strength Training": "https://images.unsplash.com/photo-1533560777802-046814bc297c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
+  "Aerobics": "https://images.unsplash.com/photo-1533547252597-ef7bf6c4479f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  "Bands": "https://images.unsplash.com/photo-1517637382994-f02da38c6728?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
+  "Body Hit": "https://images.unsplash.com/photo-1544717684-1243da23b545?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  "Pilates": "https://images.unsplash.com/photo-1518611012118-696072aa579a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" ,
+  "Shadow Boxing": "https://images.unsplash.com/photo-1593352216894-89108a0d2653?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  "Core Workout": "https://images.unsplash.com/photo-1516208398649-d5d401ba8c49?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80"}
+
+# 5.times do
+#   category = Category.create!(name: category_array.sample)
+# end
+
+
 activity_name_array = ["Get In Shape", "Yoga Basics", "Triple Tone", "Full Body Circuit", "Intense Bands", "Full-Body Starter", "Pure Pilates", "Intense Shadow Boxing", "Let's Core"]
 
 description_array = [
@@ -71,10 +88,19 @@ description_array = [
 
 
 # categories new
-category_array.each do |category|
-  category = Category.create!(name: category)
+# category_array.each do |category|
+#   category = Category.create!(name: category)
+# end
+
+categories.each do |category, url|
+  file = URI.open(url)
+  category = Category.new(name: category)
+  category.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  category.save
 end
 
+   # category.photo.attach(io: URI.open(categories), filename: 'nes.png', content_type: 'image/png')
+   #            category.save!
 
 #activities new
 activity_name_array.each_with_index do |activity_name, i|
