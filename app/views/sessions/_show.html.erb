@@ -45,7 +45,10 @@
                 <p class="modal-date"><%= session.start_time.strftime(" %A %d.%m.%Y") %> </p>
               </li>
               <li>
-                <h2> <%= session.start_time.strftime("%l:%M %p") %> </h2>
+                <div id="time-properties">
+                  <h2> <%= session.start_time.strftime("%l:%M %p") %> </h2>
+                  <p id="duration" > <%= ((session.end_time - session.start_time) / 60).round %> min </p>
+                </div>
               </li>
               <li>
                 <h2 class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </h2>

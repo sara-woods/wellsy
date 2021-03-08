@@ -23,4 +23,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+  # after editing profile info, redirect back to my_profile
+  # as :user do
+  #   get '/my_profile', :to => 'devise/registrations#edit', :as => :user_root
+  # end
+
 end

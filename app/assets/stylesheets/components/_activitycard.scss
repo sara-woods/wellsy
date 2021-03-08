@@ -91,3 +91,22 @@
 #description {
   font-size: 16px;
 }
+
+#upcoming-sessions {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.nav-tabs .nav-link.active.trainer-tab {
+  border-top: 1px solid rgb(202, 202, 202);
+  border-right: 1px solid rgb(202, 202, 202);
+}
+
+.nav-tabs.trainer-tab {
+  border-bottom: 1px solid rgb(202, 202, 202);
+}
+
+.nav.trainer-tab {
+  margin-bottom: 20px;
+}
