@@ -12,6 +12,7 @@
       </div>
 
       <% @activities.each do |activity| %>
+      
         <div class="activity-card mt-3">
 
           <div class="activity-left">
@@ -19,14 +20,10 @@
               <h4><%= activity.name %></h4>
               <div class="controls">
                 <ul class="list-inline">
-                <%# <! –– link to correct action!! ––> %>
                   <%= link_to activity_path(activity), method: :delete, data: { confirm: "Are you sure?"} do %>
                     <li class="list-inline-item"><i class="fas fa-trash-alt"></i></li>
-                  <% end %>
-                    
-                  
-                <%# <! –– link to correct action!! ––> %>
-                  <%= link_to edit_activity_path(activity) do %> 
+                  <% end %>     
+                   <%= link_to edit_activity_path(activity) do %> 
                     <li class="list-inline-item"><i class="fas fa-edit"></i></li>
                   <% end %>
                 </ul>
@@ -36,29 +33,57 @@
             <p class="category-tag-activity"><span><%= activity.category.name.upcase %></span></p>
           </div>
 
-          
-
           <div class="activity-right">
             <%= link_to "New session", new_activity_session_path(activity), class: "btn btn-primary btn-session"  %>
             <button class="sessions-button btn btn-dark" data-activity-id="<%= dom_id(activity) %>">My sessions <i class="fas fa-sort-down"></i></button>
+            <p id="upcoming-sessions"><%= activity.sessions.where("sessions.end_time >= ?", DateTime.now).count %> sessions coming up</p>
           </div>
         </div>
 
 
       <div class="session-dropdown d-none" id="<%= dom_id(activity)%>">
-        <% activity.sessions.each do |session| %>
-          <div type="button"  data-toggle="modal" data-target="#activity-<%= activity.id %>">
-            <%= render "shared/session_card", session: session, trainer: true, review: false %>
+        <ul class="nav nav-tabs trainer-tab" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active trainer-tab" id="home-tab" data-bs-toggle="tab" data-bs-target="#upcoming<%= dom_id(activity)%>" type="button" role="tab" aria-controls="upcoming" aria-selected="true">Upcoming</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link trainer-tab" id="contact-tab" data-bs-toggle="tab" data-bs-target="#past<%= dom_id(activity)%>" type="button" role="tab" aria-controls="past" aria-selected="false">Past</button>
+          </li>
+        </ul>
+
+
+        <div class="tab-content" id="myTabContent">
+
+          <div class="tab-pane fade show active" id="upcoming<%= dom_id(activity)%>" role="tabpanel" aria-labelledby="upcoming-tab">
+            <% if activity.sessions.where("sessions.end_time >= ?", DateTime.now).empty? %>
+              <p class="text-center">No upcoming sessions available</p>
+            <% end %>
+            <% activity.sessions.where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc).each do |session| %>
+              <%= render "shared/session_card", session: session, trainer: true, review: false, zoom: false %>
+            <% end %>
           </div>
-          <%= render "attendees", activity: activity, session: session %>        
-        <% end %>
         
-        <% if activity.sessions.empty? %>
-          <p class="text-center">No sessions created</p>
-        <% end %>
-        
+
+          <div class="tab-pane fade" id="past<%= dom_id(activity)%>" role="tabpanel" aria-labelledby="past-tab">      
+            <% if activity.sessions.where("sessions.end_time < ?", DateTime.now).empty? %>
+              <p class="text-center">No past sessions available</p>
+            <% else %>
+              <p class="text-center">Click on a session card see your attendees or change attendence status</p>
+            <% end %>
+            
+            <% activity.sessions.where("sessions.end_time < ?", DateTime.now).order(start_time: :desc).each do |session| %>
+            <div type="button"  data-toggle="modal" data-target="#activity-<%= activity.id %>">
+              <%= render "shared/session_card", session: session, trainer: false, review: false, zoom: false %>
+            </div>
+            <%= render "attendees", activity: activity, session: session %>
+            <% end %>    
+          </div>
+
+        </div>      
       </div>
+
     <% end %>
+
     </div>
   </div>
 </div>

@@ -1,17 +1,30 @@
 .heading-thanks {
   margin-top: 100px;
+  width: 700px;
+  margin-left: 100px;
   h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: $red;
+  }
+  h6 {
+    font-size: 24px;
+    font-weight: 300;
+  }
+  #fit {
+    // opacity: 0.6;
+    color: black;
     font-size: 4rem;
-    background-color: white;
-    opacity: 0.6;
+    span {
+      // background-color: white;
+    }
   }
 }
 
-.content-container {
-  background-color: $cream;
-}
 
-.container-thanks  {
-    text-align: center;
-    font-weight: 700;
-}
+// .container-thanks  {
+//     text-align: center;
+//     font-weight: 700;
+//     width: 900px;
+//     margin: 0 auto;
+// }

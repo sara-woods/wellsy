@@ -3,13 +3,17 @@
     <h1 id="trainer-header-1">Trainer Profile</h1>
     <h2 id="trainer-header-2"><%= @user.name %></h2>
     <p><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"></i></p>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    <% if @user.respond_to?(:photo) && @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, class: "card-session-user avatar-large", height: 100, width: 100, crop: :fill, id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+    <% else %>
+      <%= image_tag "https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png", class: "avatar-large  dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% end %>
   </div>
 </div>
 
 <div class="profile-body">
   <div class="container">
-    <h2 id="bio">Bio</h2>
+    <h2 id="bio">About</h2>
     <p><%= @user.bio %></p>
     <div class="pt-3">
 

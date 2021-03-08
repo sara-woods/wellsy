@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :booked_sessions, through: :bookings, source: :sessions
   has_many :sessions, through: :activities
+  has_one_attached :photo
 
   validates :name, presence: true
   validates :email, uniqueness: true

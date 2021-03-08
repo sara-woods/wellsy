@@ -3,9 +3,6 @@
   h2 {
     text-align: center;
   }
-  h4 {
-    // font-weight: 700;
-  }
   h1 {
     text-align: center;
     font-weight: 700;
@@ -18,4 +15,13 @@
   background-color: $cream;
 }
 
+a {
+  transition: all 0.2s linear;
+}
+
+.page-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
 

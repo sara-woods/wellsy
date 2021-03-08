@@ -1,0 +1,38 @@
+.session-card.attendee {
+  height: 80px;
+  padding: 10px 20px;
+
+  img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+  }
+  p {
+    text-align: left;
+  }
+}
+
+.modal-footer.attendee {
+  padding: 20px 40px;
+}
+
+.attendee {
+  .form-check {
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    align-content: flex-end;
+  }
+  .form-group {
+    margin: 0;
+  }
+}
+
+#attendee-controls {
+  margin: 0;
+}
+
+.form-check-input.is-valid ~ .form-check-label {
+  font-size: 16px;
+  color: black;
+}
