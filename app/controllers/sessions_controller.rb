@@ -11,6 +11,10 @@ class SessionsController < ApplicationController
     # Remember to change this back to only future ssessions showing on index instead of all
     # @sessions = Session.where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc)
     @sessions = Session.all
+    if params[:session] && params[:session] != ""
+      activities = Activity.where("name ILIKE :query OR description ILIKE :query", query: "%#{params[:session]}%")
+      @sessions = Session.where(activity_id: activities.ids)
+    end
   end
 
   def new
@@ -24,11 +28,11 @@ class SessionsController < ApplicationController
     @duration = params[:other][:duration].to_i
     @end_time = params[:session][:start_time].to_datetime + @duration.minutes
     @session = Session.new(max_participants: session_params[:max_participants], min_participants: session_params[:min_participants], price: session_params[:price], start_time: session_params[:start_time], end_time: @end_time)
-     
+
     # @session = Session.new(session_params)
     @activity = Activity.find(params[:activity_id])
     @session.activity = @activity
-    
+
     if @session.save
       redirect_to activities_path(@session)
     else
@@ -59,7 +63,7 @@ class SessionsController < ApplicationController
 
   def destroy
     @session = Session.find(params[:id])
-    
+
     if @session.empty?
       flash[:notice] = 'Session was deleted'
       @session.destroy
