@@ -7,6 +7,24 @@
           <h1 id="live-workouts">LIVE WORKOUTS.</h1>
           <h1 id="from-home">FROM HOME.</h1>
           <p id="header-p">Wellsy connects freelance trainers with anyone who wants<br>to join classes from the comfort of their own home.</p>
+
+            <%= form_tag sessions_path, method: :get do %>
+              <div class="search-bar" style="opacity: 0.80">
+                  <%= text_field_tag :session, params[:session], class: "form-control search-input", id: "typewriter-input"%>
+                <div class="search-button">
+                  <%= button_tag(type: "submit", class: "btn btn-circle custom-circle-button ") do %>
+                    <i class="fas fa-search"></i>
+                  <%end%>
+                </div>
+              </div>
+            <% end %>
+
+            <div class="noresult-container text-center">
+              <% if session.empty? %>
+                <p><em>Sorry, no sessions found...</em></p>
+              <% end %>
+            </div>
+
             <%= link_to "Browse sessions", sessions_path, class: "btn btn-primary mt-3" %>
         </div>
       </div>
