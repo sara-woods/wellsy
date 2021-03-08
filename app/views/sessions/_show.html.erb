@@ -15,7 +15,20 @@
               <% end %>
               </li>
               <li>
-                <p><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"> </i><i class="fas fa-star"></i></p>
+                <% if session.activity.user.average_rating == 0 %>
+                    <p id="no-rating">No rating yet</p>
+                  <%# <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p> %>
+                <% else %>
+                  <div class="d-flex justify-content-start  align-items-end">
+                    <% session.activity.user.average_rating.round.times do %>
+                      <p><i class='fas fa-star'></i></p> 
+                    <% end %>
+                    <% (5 - session.activity.user.average_rating).round.times do %>
+                      <p><i class='far fa-star'></i></p> 
+                    <% end %>
+                    <p id="average"><%= session.activity.user.average_rating %></p>
+                  </div>
+                <% end %>
               </li>
             </ul>
             <% if session.activity.user.respond_to?(:photo) && session.activity.user.photo.attached? %>

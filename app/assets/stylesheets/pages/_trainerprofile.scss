@@ -32,13 +32,27 @@
 }
 
 #trainer-header-1 {
-  margin-bottom: 8px;
+  margin-bottom: 30px;
 }
 
 #trainer-header-2 {
   margin: 0;
 }
 
+.show-rating {
+  .fa-star{
+    font-size: 20px;
+    margin-top: 8px;
+  }
+  p {
+    margin-bottom: 3px;
+  }
+  #average{
+    font-size: 20px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+}
 
 
 
