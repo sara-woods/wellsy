@@ -49,12 +49,20 @@
           </div>
         <% end %>
 
-        <div class="numbers">
-          <h2>
-            <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
-                      £<%= session.price %>
-          </h2>
-        </div>
+        
+        <% if zoom %>
+          <%# Change the  paths to the correct  paths %>
+          <%= link_to "Open in Zoom", edit_session_path(session), class: "btn btn-primary" %>
+          <%= link_to "Add to Google calendar", edit_session_path(session), class: "btn btn-dark" %>
+        <% else %>
+          <div class="numbers">
+            <h2>
+              <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
+                        £<%= session.price %>
+            </h2>
+          </div>
+        <% end %>
+        
       </div>
 
       <div class="image-holder" style="background-image: url('https://source.unsplash.com/random');">
