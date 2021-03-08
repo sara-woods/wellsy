@@ -1,4 +1,4 @@
-<div class="modal" id="activity-<%=activity.id%>" tabindex="-1" role="dialog">
+<div class="modal" id= "<%=attendees%>-activity-<%=activity.id%>" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,11 +14,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      
+
       <div class="modal-body">
         <% session.attendees.each do |attendee| %>
           <div class="session-card attendee  justify-content-between align-items-center">
-          
+
             <div class="d-flex justify-content-start align-items-center">
               <% if attendee.respond_to?(:photo) && attendee.photo.attached? %>
                 <%= cl_image_tag attendee.photo.key, class: "card-session-user avatar-large mr-3 ml-3", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
@@ -28,13 +28,15 @@
               <p><%= attendee.name %><p>
             </div>
 
+          <% if session.end_time < DateTime.now %>
             <div id="attendee-controls">
               <% booking = attendee.bookings.find_by(session: session)  %>
               <%= simple_form_for booking, url: missed_path(booking), remote: true do |f| %>
                 <%= f.input :attended, as: :boolean, checked_value: true, unchecked_value: false, input_html: { class: "toggle", checked: booking.attended, onchange: 'this.form.submit();'}, label: "Attended" %>
               <% end %>
             </div>
-          
+          <%end%>
+
           </div>
         <% end %>
       </div>
