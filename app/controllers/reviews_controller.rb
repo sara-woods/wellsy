@@ -13,7 +13,9 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to my_bookings_path
     else
-      render :new
+      flash[:notice] = "Rating can't be blank" if @review.errors.messages[:rating].first
+      flash[:notice] = @review.errors.messages[:session].first if @review.errors.messages[:session].first
+      render :new      
     end
 
   end
