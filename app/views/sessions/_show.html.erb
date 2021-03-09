@@ -22,7 +22,7 @@
                     <% session.activity.user.average_rating.round.times do %>
                       <p><i class='fas fa-star'></i></p> 
                     <% end %>
-                    <% (5 - session.activity.user.average_rating).round.times do %>
+                    <% (5 - session.activity.user.average_rating.round).times do %>
                       <p><i class='far fa-star'></i></p> 
                     <% end %>
                     <p id="average"><%= session.activity.user.average_rating %></p>
