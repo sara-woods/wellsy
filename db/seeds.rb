@@ -66,7 +66,7 @@ trainee_images=["https://images.unsplash.com/flagged/photo-1570612861542-284f4c1
               password: "123456",
               trainer: true,
               bio: bio_array.sample,
-              zoom_link: "zoom.us 19xLS"
+              zoom_link: "https://us05web.zoom.us/j/4490529691?pwd=bnhmWmJwbStoUUprOUREL3pEWTVGQT09"
               )
               user.photo.attach(io: URI.open(trainer_images.sample), filename: 'nes.png', content_type: 'image/png')
               user.save!

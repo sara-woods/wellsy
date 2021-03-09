@@ -65,7 +65,7 @@
 
         <% if zoom %>
           <%# Change the  paths to the correct  paths %>
-          <%= link_to "Open in Zoom", edit_session_path(session), class: "btn btn-primary" %>
+          <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary" %>
           <%= link_to "Add to Google calendar", edit_session_path(session), class: "btn btn-dark" %>
         <% elsif review %>
             <%= link_to "Review", new_session_review_path(session), class: "btn btn-primary" %>
