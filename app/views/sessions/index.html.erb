@@ -18,68 +18,20 @@
 
 <!-- filters -->
 
+  <%= simple_form_for :filters, url: sessions_path, remote: true, method: :get do |f| %>
+   <div class="filter">
 
-  <div class="filter">
-
-
-  <div class="dropdown">
-    <button class="btn dropdown-toggle category-tag-filter" type="button" data-toggle="dropdown">Category
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <% @categories.each do |category| %>
-       <li><a href="#"><%= category.name%></a></li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="dropdown">
-    <button class="btn dropdown-toggle category-tag-filter" type="button" data-toggle="dropdown">Price
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#"> <£10 </a></li>
-      <li><a href="#"> <£15 </a></li>
-      <li><a href="#"> <£20 </a></li>
-      <li><a href="#"> >£20 </a></li>
-    </ul>
-  </div>
-
-    <div class="dropdown">
-    <button class="btn dropdown-toggle category-tag-filter" type="button" data-toggle="dropdown">Day of the week
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Monday</a></li>
-      <li><a href="#">Tuesday</a></li>
-      <li><a href="#">Wednesday</a></li>
-      <li><a href="#">Thursday</a></li>
-      <li><a href="#">Friday</a></li>
-      <li><a href="#">Saturday</a></li>
-      <li><a href="#">Sunday</a></li>
-
-    </ul>
-  </div>
-
-  </div>
-
+   <%= f.input :category, as: :select, label: false, collection:  Category.all, include_blank: "Category", value_method: :id, onchange: "this.form.submit()", input_html: {class: "category-tag-filter" }, selected: params.dig(:filters, :category)%>
+    <%= f.input :price, as: :select, label: false, collection:  ["<£10", "<£15", "<£20", "<£30" ], include_blank: "Price", onchange: "this.form.submit()", input_html: { class: "category-tag-filter" }, selected: params.dig(:filters, :price) %>
+     <%= f.input :day, as: :select, label: false, collection:  Date::DAYNAMES.rotate, include_blank: "Day", onchange: "this.form.submit()", input_html: { class: "category-tag-filter" }, selected: params.dig(:filters, :day) %>
+   <%= f.submit "Filter", class: "btn btn-primary" %>
+ </div>
+<% end %>
 
 <div class="container mb-5 mt-2">
-  <div class="row">
-    <% @sessions.each do |session| %>
-      <%= render "shared/session_card", session: session, review: false, trainer: false, zoom: false %>
-      <%= render "show", session: session %>
-    <% end %>
+  <div class="row" id="index-sessions">
+    <%= render 'sessions', sessions: @sessions %>
   </div>
 </div>
 
-<!-- script for dropdown -->
-
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $(".dropdown-menu li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
 

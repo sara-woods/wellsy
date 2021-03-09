@@ -4,6 +4,10 @@ class Session < ApplicationRecord
   has_many :attendees, through: :bookings, source: :user
   has_many :reviews, dependent: :destroy
 
+
+  delegate :category, to: :activity
+
+
   validates :start_time, presence: true
   validates :end_time, presence: true
   validates :max_participants, presence: true
