@@ -24,9 +24,9 @@
                       placeholder: "••••••" %>
           <%= f.input :photo, label:"Upload your picture", as: :file, input_html: { multiple: false } %>
           <%= f.input :trainer, as: :boolean, checked_value: true, unchecked_value: false, input_html: { class: "toggle" }, label: "I want to sign up as a trainer" %>
-          <div class="extra-inputs d-none">
-            <%= f.input :bio, label: "About me", placeholder: "I have been a Certified Personal Trainer since 2017 and previously worked as a Personal Trainer at the University of Maryland. Hope to use my knowledge to spread and improve health and wellness! "  %>
-            <%= f.input :zoom_link, label: "My personal Zoom link", placeholder: "https://zoom.us/......."  %>
+          <div class="extra-inputs <%= 'd-none' if !f.object.trainer %>">
+            <%= f.input :bio, label: "About me", placeholder: "Tell us about yourself..."  %>
+            <%= f.input :zoom_link, label: "My personal Zoom link", placeholder: "https://zoom.us/..."  %>
           </div>
 
         </div>
