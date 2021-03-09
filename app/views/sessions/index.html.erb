@@ -26,10 +26,9 @@
     <button class="btn dropdown-toggle category-tag-filter" type="button" data-toggle="dropdown">Category
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <input class="form-control" id="myInput" type="text" placeholder="Search..">
-      <li><a href="#">Yoga</a></li>
-      <li><a href="#">Boxing</a></li>
-      <li><a href="#">Pilates</a></li>
+      <% @categories.each do |category| %>
+       <li><a href="#"><%= category.name%></a></li>
+      <% end %>
     </ul>
   </div>
 
@@ -37,10 +36,10 @@
     <button class="btn dropdown-toggle category-tag-filter" type="button" data-toggle="dropdown">Price
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <input class="form-control" id="myInput" type="text" placeholder="Search..">
-      <li><a href="#"><£10</a></li>
-      <li><a href="#"><£15</a></li>
-      <li><a href="#"><£20</a></li>
+      <li><a href="#"> <£10 </a></li>
+      <li><a href="#"> <£15 </a></li>
+      <li><a href="#"> <£20 </a></li>
+      <li><a href="#"> >£20 </a></li>
     </ul>
   </div>
 
@@ -48,7 +47,6 @@
     <button class="btn dropdown-toggle category-tag-filter" type="button" data-toggle="dropdown">Day of the week
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <input class="form-control" id="myInput" type="text" placeholder="Search..">
       <li><a href="#">Monday</a></li>
       <li><a href="#">Tuesday</a></li>
       <li><a href="#">Wednesday</a></li>
@@ -61,15 +59,6 @@
   </div>
 
   </div>
-
-
-
-<% if @sessions.empty? %>
-  <div class="noresult-container text-center">
-    <p><em>Sorry, no sessions found...</em></p>
-  </div>
-<% end %>
-
 
 
 <div class="container mb-5 mt-2">
