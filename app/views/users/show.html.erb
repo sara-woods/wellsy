@@ -6,20 +6,11 @@
     <h2 id="trainer-header-2"><%= @user.name %></h2>
 
     <div class="show-rating">
-           <% if @user.average_rating == 0 %>
-              <p id="no-rating">No rating yet</p>
-             <%# <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p> %>
-           <% else %>
-            <div class="d-flex justify-content-start  align-items-end">
-              <% @user.average_rating.round.times do %>
-                <p><i class='fas fa-star'></i></p> 
-              <% end %>
-              <% (5 - @user.average_rating.round).times do %>
-                <p><i class='far fa-star'></i></p> 
-              <% end %>
-              <p id="average"><%= @user.average_rating %></p>
-            </div>
-          <% end %>
+      <% if @user.average_rating == 0 %>
+        <p id="no-rating">No rating yet</p>
+      <% else %>
+        <%= render "users/stars", average_rating: @user.average_rating %>
+      <% end %>
     </div>
 
     <% if @user.respond_to?(:photo) && @user.photo.attached? %>
