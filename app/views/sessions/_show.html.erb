@@ -18,15 +18,7 @@
                 <% if session.activity.user.average_rating == 0 %>
                     <p id="no-rating">No rating yet</p>
                 <% else %>
-                  <div class="d-flex justify-content-start  align-items-end">
-                    <% session.activity.user.average_rating.round.times do %>
-                      <p><i class='fas fa-star'></i></p> 
-                    <% end %>
-                    <% (5 - session.activity.user.average_rating.round).times do %>
-                      <p><i class='far fa-star'></i></p> 
-                    <% end %>
-                    <p id="average"><%= session.activity.user.average_rating %></p>
-                  </div>
+                  <%= render "users/stars", average_rating: session.activity.user.average_rating%>
                 <% end %>
               </li>
             </ul>
