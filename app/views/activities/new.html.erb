@@ -10,7 +10,8 @@
           <%= f.input :name %>
           <%= f.input :description %>
           <div class="form-actions">
-            <%= f.submit "Add activity", class: "btn btn-primary" %>
+            <%= f.submit "Add activity", class: "btn btn-primary mb-2" %>
+            <%= link_to "Back", activities_path, class: "btn btn-dark" %>
           </div>
         <% end %>
       </div>

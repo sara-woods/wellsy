@@ -54,7 +54,7 @@
           <div class="row profilecard">
             <% @sessions.each do |session| %>
               <%= render "shared/session_card", session: session, review: false, trainer: false, zoom: false %>
-              <%= render "sessions/show", session: session %>
+              <%= render "sessions/show", session: session, pay: true %>
             <% end %>
           </div>
         </div>
