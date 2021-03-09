@@ -44,3 +44,5 @@ document.addEventListener('turbolinks:load', () => {
 
 
 const myCallBack = (event) => { console.log(event) }
+
+import "controllers"

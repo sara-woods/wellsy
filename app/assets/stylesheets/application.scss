@@ -12,3 +12,27 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+// Fixes bootstrap nav-brand container overlap
+@include media-breakpoint-down(xs) {
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// Masquerade alert shouldn't have a bottom margin
+body > .alert {
+  margin-bottom: 0;
+}
+
+#videos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.OT_root {
+  height: 240px !important;
+}
