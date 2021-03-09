@@ -26,7 +26,7 @@ bio_array = [
             ]
 
 
-trainer_images = ["https://images.unsplash.com/photo-1597347343908-2937e7dcc560?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+user_images = ["https://images.unsplash.com/photo-1597347343908-2937e7dcc560?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
 "https://images.unsplash.com/flagged/photo-1566064352554-f36ef0ef23b2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
 "https://images.unsplash.com/photo-1529516548873-9ce57c8f155e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
 "https://images.unsplash.com/photo-1518609571773-39b7d303a87b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
@@ -34,59 +34,21 @@ trainer_images = ["https://images.unsplash.com/photo-1597347343908-2937e7dcc560?
 "https://images.unsplash.com/flagged/photo-1566063698649-9df11f39ba51?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
 "https://images.unsplash.com/photo-1534368420009-621bfab424a8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
 "https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80",
-"https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-"https://images.unsplash.com/photo-1485727749690-d091e8284ef3?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
-"https://images.unsplash.com/photo-1554244933-d876deb6b2ff?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8Z3ltJTIwYmxhY2slMjB3b21hbnxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60",
-"https://images.unsplash.com/photo-1598136490929-292a0a7890c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjN8fHdvcmtvdXR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-"https://images.unsplash.com/photo-1592704708371-7bf1b1a19d6f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8eW9nYSUyMGJsYWNrJTIwd29tYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"]
-
-trainee_images=["https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-"https://images.unsplash.com/photo-1552058544-f2b08422138a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=644&q=80",
-"https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-"https://images.unsplash.com/photo-1543080853-556086153871?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-"https://images.unsplash.com/photo-1596215143922-eedeaba0d91c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-"https://images.unsplash.com/photo-1595399874399-10f2444c4eb2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=775&q=80",
-"https://images.unsplash.com/photo-1535643302794-19c3804b874b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-"https://images.unsplash.com/photo-1589216996730-20b7fdef7216?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
-"https://images.unsplash.com/photo-1590697442615-a381b5b557c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-"https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-"https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
-"https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjl8fHlvZ2ElMjBibGFjayUyMHdvbWFufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-"https://images.unsplash.com/photo-1543486958-d783bfbf7f8e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8c2VsZmllfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-"https://images.unsplash.com/photo-1582152629442-4a864303fb96?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8c2VsZmllfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-"https://images.unsplash.com/photo-1518671645931-e1d946a64b17?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8c2VsZmllfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-"https://images.unsplash.com/photo-1551854590-dc9c6265b1b1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OXx8YXNpYW4lMjB3b21hbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-]
+"https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"]
 
 
-#trainers
+#users
 10.times do
   user = User.new(name: Faker::Name.name,
               email: Faker::Internet.email,
               password: "123456",
-              trainer: true,
+              trainer: [true, false].sample,
               bio: bio_array.sample,
               zoom_link: "https://us05web.zoom.us/j/4490529691?pwd=bnhmWmJwbStoUUprOUREL3pEWTVGQT09"
               )
-              user.photo.attach(io: URI.open(trainer_images.sample), filename: 'nes.png', content_type: 'image/png')
+              user.photo.attach(io: URI.open(user_images.sample), filename: 'nes.png', content_type: 'image/png')
               user.save!
 end
-
-#trainees
-10.times do
-  user = User.new(name: Faker::Name.name,
-              email: Faker::Internet.email,
-              password: "123456",
-              trainer: false,
-              )
-              user.photo.attach(io: URI.open(trainee_images.sample), filename: 'nes.png', content_type: 'image/png')
-              user.save!
-end
-
-
-
-
-
 
 
 #categories
@@ -141,20 +103,18 @@ end
    #            category.save!
 
 #activities new
-2.times do
-  activity_name_array.each_with_index do |activity_name, i|
-    activity = Activity.new(name: activity_name,
-                user_id: User.where(trainer: true).pluck(:id).sample,
-                description: description_array.sample,
-                category_id: Category.find_by_name(category_array[i]).id)
-    activity.save!
-  end
+activity_name_array.each_with_index do |activity_name, i|
+   activity = Activity.new(name: activity_name,
+              user_id: User.where(trainer: true).pluck(:id).sample,
+              description: description_array.sample,
+              category_id: Category.find_by_name(category_array[i]).id)
+  activity.save!
 end
 
 
 
 #sessions
-40.times do
+10.times do
   starttime = (((DateTime.now - 10.days)..(DateTime.now + 10.days)).to_a.sample + rand(24).hours).change(min:0)
   Session.create!(min_participants: rand(1..5), max_participants: rand(8..10), start_time: starttime,
   end_time: starttime + 1.hour,
@@ -163,9 +123,10 @@ end
 
 
 #bookings
-50.times do
-  Booking.create(user_id: User.where(trainer: false).pluck(:id).sample,
-  session_id: Session.pluck(:id).sample,
+30.times do
+  user_id = User.pluck(:id).sample
+  Booking.create!(user_id: user_id,
+  session_id: Session.all.reject { |session| session.attendees.pluck(:id).include?(user_id) }.pluck(:id).sample,
   attended: true )
 end
 
