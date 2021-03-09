@@ -16,24 +16,24 @@
           <%= link_to user_path(session.activity.user), class: "trainer-link" do %>
             <h6>by <%= session.activity.user.name %></h6>
           <% end %>
-          
-           
+
+
            <% if session.activity.user.average_rating == 0 %>
               <p id="no-rating">No rating yet</p>
              <%# <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p> %>
            <% else %>
             <div class="d-flex justify-content-start  align-items-end">
               <% session.activity.user.average_rating.round.times do %>
-                <p><i class='fas fa-star'></i></p> 
+                <p><i class='fas fa-star'></i></p>
               <% end %>
               <% (5 - session.activity.user.average_rating).round.times do %>
-                <p><i class='far fa-star'></i></p> 
+                <p><i class='far fa-star'></i></p>
               <% end %>
               <p id="average"><%= session.activity.user.average_rating %></p>
             </div>
           <% end %>
-                    
-          
+
+
         </div>
         <div class="info-bottom">
           <p> <%= session.start_time.strftime("%A %d.%m.%y") %> </p>
@@ -65,8 +65,20 @@
 
         <% if zoom %>
           <%# Change the  paths to the correct  paths %>
-          <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary" %>
-          <%= link_to "Add to Google calendar", edit_session_path(session), class: "btn btn-dark" %>
+
+         <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary" %>
+
+          <div title="Add to Calendar" class="addeventatc">
+              <p style="color: white !important"><!-- <i class="far fa-calendar-plus"> --></i> Add to Calendar</p>
+              <span class="start"><%= session.start_time %></span>
+              <span class="end"><%= ((session.end_time - session.start_time) / 60) %></span>
+              <span class="timezone">Europe/London</span>
+              <span class="title"><%= session.activity.name %></span>
+              <span class="description"><%= session.activity.name %><br>by <%= session.activity.user.name %></span>
+              <span class="location">Zoom Link: <%= session.activity.user.zoom_link %></span>
+          </div>
+
+
         <% elsif review %>
             <%= link_to "Review", new_session_review_path(session), class: "btn btn-primary" %>
         <% else %>
