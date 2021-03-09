@@ -30,8 +30,10 @@
           <% @my_past_bookings.each do |booking| %>
             <% if booking.attended %>
               <%= render "shared/session_card", session: booking.session, review: true, trainer: false,  zoom: false %>
+              
             <% else %>         
               <%= render "shared/session_card", session: booking.session, review: false, trainer: false, zoom: false %>
+              
             <% end %>
           <% end %>
         </div>
