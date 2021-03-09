@@ -1,10 +1,22 @@
 .fa-user, .fa-envelope, .fa-laptop {
   color: $red;
-  margin-right: 4px;
+  // margin-right: 8px;
 }
 
 .img-name {
   h4 {
     font-weight: 300;
   }
+}
+
+.my-info {
+  width: min-content;
+}
+
+.info-icon {
+  min-width: 50px;
+}
+
+.container.my-profile {
+  width: 1200px;
 }

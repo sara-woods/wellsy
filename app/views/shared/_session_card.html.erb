@@ -55,7 +55,7 @@
               <%= link_to session_delete_path(session), method: :delete, data: { confirm: "Are you sure?"} do %>
                 <li class="list-inline-item"><i class="fas fa-trash-alt"></i></li>
               <% end %>
-              <%= link_to edit_session_path(session) do %>
+              <%= link_to edit_session_path(session), id: "edit-button" do %>
                 <li class="list-inline-item"><i class="fas fa-edit"></i></li>
               <% end %>
             </ul>
@@ -64,12 +64,11 @@
 
 
         <% if zoom %>
-          <%# Change the  paths to the correct  paths %>
 
          <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary" %>
 
           <div title="Add to Calendar" class="addeventatc">
-              <p style="color: white !important"><!-- <i class="far fa-calendar-plus"> --></i> Add to Calendar</p>
+              <p style="color: white !important"></i> Add to Calendar</p>
               <span class="start"><%= session.start_time %></span>
               <span class="end"><%= ((session.end_time - session.start_time) / 60) %></span>
               <span class="timezone">Europe/London</span>
