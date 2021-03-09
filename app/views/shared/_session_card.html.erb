@@ -65,7 +65,8 @@
 
         <% if zoom %>
           <%# Change the  paths to the correct  paths %>
-          <%= link_to "Open in Zoom", edit_session_path(session), class: "btn btn-primary" %>
+
+         <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary" %>
 
           <div title="Add to Calendar" class="addeventatc">
               <p style="color: white !important"><!-- <i class="far fa-calendar-plus"> --></i> Add to Calendar</p>

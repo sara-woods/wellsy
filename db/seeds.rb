@@ -66,7 +66,7 @@ trainee_images=["https://images.unsplash.com/flagged/photo-1570612861542-284f4c1
               password: "123456",
               trainer: true,
               bio: bio_array.sample,
-              zoom_link: "zoom.us 19xLS"
+              zoom_link: "https://us05web.zoom.us/j/4490529691?pwd=bnhmWmJwbStoUUprOUREL3pEWTVGQT09"
               )
               user.photo.attach(io: URI.open(trainer_images.sample), filename: 'nes.png', content_type: 'image/png')
               user.save!
@@ -154,7 +154,7 @@ end
 
 
 #sessions
-20.times do
+40.times do
   starttime = (((DateTime.now - 10.days)..(DateTime.now + 10.days)).to_a.sample + rand(24).hours).change(min:0)
   Session.create!(min_participants: rand(1..5), max_participants: rand(8..10), start_time: starttime,
   end_time: starttime + 1.hour,
