@@ -2,6 +2,14 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
 
+  def filters
+     @filtered_category = Session.where(category: params[:category])
+     @filtered_price = Session.where(price: params[:price])
+     @filtered_date = Session.where(start_time: params[:start_time])
+  end
+
+
+
   def my_bookings
     @my_upcoming_bookings = current_user.bookings.joins(:session).where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc)
     @my_past_bookings = current_user.bookings.joins(:session).where("sessions.end_time < ?", DateTime.now).order(start_time: :desc)
