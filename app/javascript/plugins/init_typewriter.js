@@ -29,7 +29,7 @@ const initTypewriter = () => {
     });
 
     typewriter
-      .typeString('look for a session')
+      .typeString('find a session')
       .pauseFor(1000)
       .deleteAll()
       .typeString('yoga')
