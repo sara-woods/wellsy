@@ -15,11 +15,21 @@
   <% end %>
 </div>
 
+
+<div class="filter">
+  <p class="category-tag-filter">Category</p>
+  <p class="category-tag-filter">Price</p>
+  <p class="category-tag-filter">Day of week</p>
+</div>
+
+
+
 <% if @sessions.empty? %>
   <div class="noresult-container text-center">
     <p><em>Sorry, no sessions found...</em></p>
   </div>
 <% end %>
+
 
 
 <div class="container mb-5 mt-2">
@@ -30,5 +40,3 @@
     <% end %>
   </div>
 </div>
-
-
