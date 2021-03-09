@@ -3,7 +3,13 @@
 }
 
 .addeventatc {
-  background-color: #35393C;
-  font-color: white;
-  font-weight: bold;
+  background-color: #35393C !important;
+  font-weight: normal !important;
+  // font-size: 1rem !important;
+  font-family: "Montserrat" !important, sans-serif;
+  padding-left: 12px !important;
+}
+
+.addeventatc_icon {
+  opacity: 0;
 }

@@ -68,13 +68,13 @@
           <%= link_to "Open in Zoom", edit_session_path(session), class: "btn btn-primary" %>
 
           <div title="Add to Calendar" class="addeventatc">
-              Add to Calendar
+              <p style="color: white !important"><!-- <i class="far fa-calendar-plus"> --></i> Add to Calendar</p>
               <span class="start"><%= session.start_time %></span>
               <span class="end"><%= ((session.end_time - session.start_time) / 60) %></span>
               <span class="timezone">Europe/London</span>
               <span class="title"><%= session.activity.name %></span>
               <span class="description"><%= session.activity.name %><br>by <%= session.activity.user.name %></span>
-              <span class="location">Zoom Link</span>
+              <span class="location">Zoom Link: <%= session.activity.user.zoom_link %></span>
           </div>
 
 
