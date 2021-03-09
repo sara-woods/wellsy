@@ -163,7 +163,7 @@ end
 
 
 #bookings
-30.times do
+50.times do
   Booking.create(user_id: User.where(trainer: false).pluck(:id).sample,
   session_id: Session.pluck(:id).sample,
   attended: true )
