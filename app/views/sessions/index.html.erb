@@ -1,14 +1,11 @@
-<!-- search results
-choose the right class for you
-filter -->
-
-
-
+<div class="container mb-2 mt-2">
+  <h1 id="workout">Choose your next <span>workout</span></h1>
+</div>
 <!-- sessions listed -->
-<div class="isearch-container sticky-top mt-6">
+<div class="isearch-container sticky-top mt-2">
   <%= form_tag sessions_path, method: :get do %>
     <div class="isearch-bar">
-        <%= text_field_tag :session, params[:session], class: "form-control isearch-input", placeholder: "search.."%>
+        <%= text_field_tag :session, params[:session], class: "form-control isearch-input", placeholder: "search..."%>
       <div class="isearch-button">
         <%= button_tag(type: "submit", class: "btn btn-circle icustom-circle-button ") do %>
           <i class="fas fa-search"></i>
@@ -18,15 +15,14 @@ filter -->
   <% end %>
 </div>
 
-<div class="noresult-container text-center">
-  <% if session.empty? %>
-    <p><em>Sorry, sessions found...</em></p>
-  <% end %>
-</div>
+<% if @sessions.empty? %>
+  <div class="noresult-container text-center">
+    <p><em>Sorry, no sessions found...</em></p>
+  </div>
+<% end %>
 
 
-<div class="container mb-5 mt-5">
-  <h1>Choose your next workout</h1>
+<div class="container mb-5 mt-2">
   <div class="row">
     <% @sessions.each do |session| %>
       <%= render "shared/session_card", session: session, review: false, trainer: false, zoom: false %>

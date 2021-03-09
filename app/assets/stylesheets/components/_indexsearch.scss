@@ -10,8 +10,8 @@
   border-radius: 50px;
   font-size: 1.6rem;
   padding-left: 1.6rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 200;
+  // font-family: 'Poppins', sans-serif;
+  font-weight: 300;
 }
 
 .isearch-button  {
@@ -45,4 +45,10 @@
 .noresult-container {
   width: 500px;
   margin: 30px auto;
+}
+
+#workout {
+  span {
+    color: $red;
+  }
 }
