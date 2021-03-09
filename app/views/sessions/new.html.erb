@@ -29,7 +29,8 @@
         </div>
         <%= f.input :price, label: "Price (£)" %>
         <div class="form-actions">
-          <%= f.submit "Add",  class: "btn btn-primary"%>
+          <%= f.submit "Add",  class: "btn btn-primary mb-2"%>
+          <%= link_to "Back", activities_path, class: "btn btn-dark" %>
         </div>
       <% end %>
     </div>
