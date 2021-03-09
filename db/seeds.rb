@@ -171,5 +171,24 @@ end
 
 
 
+fake_reviews = ["It was my first time doing spin and I learned a lot from it. Can’t wait to do it again!",
+"It’s great for people of all levels, and manages to do a lot in one hour without feeling rushed. It’s my favorite class I’ve ever taken!",
+"They both give you enough instruction on what you’ll be doing next, while talking through the workout, specifically at points where they know you’ll slack off a little or need an extra boost.",
+"You walk out feeling exhausted but amazing.",
+"Very nicely done.",
+"Nothing to complain about",
+"The most energetic and motivating instructor",
+"Definitely will be there again",
+"You get a great workout, burn tons of calories and have a great time doing it.",
+"It is really amazing to come back from vacations in a better shape than when I left! Trainings are painful (in a good way :)) and never boring! ",
+"Very good trainer, motivated and great relationships with clients!",
+"Looking forward to coming back!",
+"It was ok"]
 
+20.times do
+  Review.create(content: fake_reviews.sample,
+  rating: rand(2..5),
+  user_id: User.where(trainer: false).pluck(:id).sample,
+  session_id: Session.pluck(:id).sample)
+end
 
