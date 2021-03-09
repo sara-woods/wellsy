@@ -22,7 +22,8 @@ class BookingsController < ApplicationController
         flash[:notice] = "Booking for #{@session.activity.name} complete!"
         redirect_to thank_you_path
       else
-        render "sessions/show"
+        flash[:notice] = "Session could not be booked!"
+        redirect_to sessions_path
       end
   end
 
