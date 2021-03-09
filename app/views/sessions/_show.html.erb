@@ -17,7 +17,6 @@
               <li>
                 <% if session.activity.user.average_rating == 0 %>
                     <p id="no-rating">No rating yet</p>
-                  <%# <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p> %>
                 <% else %>
                   <div class="d-flex justify-content-start  align-items-end">
                     <% session.activity.user.average_rating.round.times do %>
@@ -36,7 +35,7 @@
             <% else %>
               <%= image_tag "https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png", class: "avatar-large  dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
-            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button> -->
+            
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -67,7 +66,16 @@
                 <h2 class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </h2>
               </li>
             </ul>
-            <h2><%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary buy" %></h2>
+
+            
+            <% if pay %>
+              <h2><%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary buy" %></h2>
+            <% else %>
+              <h6 class="mr-5 color-red">You have already payed for this session</h6>
+            <% end %>
+            
+
+            
           </div>
         </div>
       </div>

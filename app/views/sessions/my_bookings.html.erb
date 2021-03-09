@@ -21,6 +21,7 @@
         <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
           <% @my_upcoming_bookings.each do |booking| %>
               <%= render "shared/session_card", session: booking.session, review: false, trainer: false, zoom: true %>
+              <%= render "show", session: booking.session, pay: false %>
           <% end %>
         </div>
 
