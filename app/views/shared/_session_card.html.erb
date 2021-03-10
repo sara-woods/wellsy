@@ -12,6 +12,8 @@
       <div class="card-session-info">
         <div class="info-top">
           <h3><%= session.activity.name %></h3>
+
+
           <div class="trainer-link-div">
             <%= link_to user_path(session.activity.user), class: "trainer-link" do %>
               <h6>by <%= session.activity.user.name %></h6>

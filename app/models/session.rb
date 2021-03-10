@@ -16,8 +16,14 @@ class Session < ApplicationRecord
 
   validate :class_size
 
+  monetize :price_cents
+
   def empty?
     bookings.empty?
+  end
+
+  def full?
+    max_participants == bookings.count
   end
 
   private
