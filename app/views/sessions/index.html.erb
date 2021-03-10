@@ -20,7 +20,7 @@
 
 <!-- filters -->
 
-  <%= simple_form_for :filters, url: sessions_path, remote: true, method: :get do |f| %>
+  <%= simple_form_for :filters, url: sessions_path, method: :get do |f| %>
    <div class="filter">
 
    <%= f.input :category, as: :select, label: false, collection:  Category.all, include_blank: "Category", value_method: :id, onchange: "this.form.submit()", input_html: {class: "category-tag-filter" }, selected: params.dig(:filters, :category)%>
