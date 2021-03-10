@@ -63,11 +63,13 @@
 
         <% if review %>
             <%= link_to "Review", new_session_review_path(session), class: "btn btn-primary" %>
-        <% else %>
+        <% end %>
+          
+        <% if !review && !zoom %>
           <div class="numbers">
             <h2>
               <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
-                        £<%= session.price %>
+                        £<%=  money_without_cents session.price %>
             </h2>
           </div>
         <% end %>
@@ -84,7 +86,7 @@
         <% if zoom %>
 
           <div id="zoom-calendar-buttons" class="d-flex flex-column">
-              <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary"  %>
+              <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary", target: "_blank"  %>
 
                 <div title="Add to Calendar" class="addeventatc m-0 mt-2 ">
                     <p style="color: white !important; font-size: 1rem;"></i> Add to Calendar</p>
