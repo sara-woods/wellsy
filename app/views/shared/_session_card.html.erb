@@ -50,6 +50,11 @@
 
 
         <% if trainer %>
+
+        <% if session.activity.user == current_user || Booking.where(user:current_user, session:session).any? %>
+          <%= link_to "Join Live Session", room_path(session.room), class: "btn btn-primary"  %>
+        <% end %>
+
           <div class="controls">
             <ul class="list-inline">
               <%= link_to session_delete_path(session), method: :delete, data: { confirm: "Are you sure?"} do %>
@@ -63,10 +68,10 @@
         <% end %>
 
 
+
         <% if zoom %>
           <%# Change the  paths to the correct  paths %>
 
-         <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary" %>
 
           <div title="Add to Calendar" class="addeventatc">
               <p style="color: white !important"><!-- <i class="far fa-calendar-plus"> --></i> Add to Calendar</p>
@@ -75,8 +80,13 @@
               <span class="timezone">Europe/London</span>
               <span class="title"><%= session.activity.name %></span>
               <span class="description"><%= session.activity.name %><br>by <%= session.activity.user.name %></span>
-              <span class="location">Zoom Link: <%= session.activity.user.zoom_link %></span>
+              <span class="location">Class Link: <%= room_path(session.room) %></span>
           </div>
+
+
+        <% if session.activity.user == current_user || Booking.where(user:current_user, session:session).any? %>
+          <%= link_to "Join Live Session", room_path(session.room), class: "btn btn-primary"  %>
+        <% end %>
 
 
         <% elsif review %>

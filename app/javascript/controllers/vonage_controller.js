@@ -24,7 +24,7 @@ export default class extends Controller {
   }
 
   initializeSession() {
-    this.Session = OT.initSession(this.apikey, this.sessionId)
+    this.session = OT.initSession(this.apikey, this.sessionId)
 
     this.session.on('streamCreated', this.streamCreated.bind(this))
 

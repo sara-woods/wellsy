@@ -15,8 +15,8 @@
 
 <div  id="videos"
       data-controller="vonage"
-      data-api-key-"<%= Rails.application.credentials.vonage_api_key %>"
-      data-vonage-session-id="<%= @vonage.session_id %>"
+      data-api-key="<%= ENV['VONAGE_API_KEY'] %>"
+      data-vonage-session-id="<%= @room.vonage_session_id %>"
       data-vonage-token="<%= @token %>"
       data-vonage-name="<%= current_user.name %>"
       >

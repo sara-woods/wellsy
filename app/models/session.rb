@@ -3,6 +3,8 @@ class Session < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :attendees, through: :bookings, source: :user
   has_many :reviews, dependent: :destroy
+  has_one :room
+  after_create :create_room
 
   validates :start_time, presence: true
   validates :end_time, presence: true
@@ -14,6 +16,10 @@ class Session < ApplicationRecord
 
   def empty?
     bookings.empty?
+  end
+
+  def create_room
+    Room.create(session: self)
   end
 
   private

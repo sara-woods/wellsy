@@ -23,6 +23,7 @@ require("channels")
 // ----------------------------------------------------
 
 // External imports
+import "controllers"
 import "bootstrap";
 import { showTeacherInput } from "../components/show_teacher_input";
 import { showSessions } from "../components/show_sessions";
@@ -45,4 +46,3 @@ document.addEventListener('turbolinks:load', () => {
 
 const myCallBack = (event) => { console.log(event) }
 
-import "controllers"

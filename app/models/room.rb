@@ -1,6 +1,7 @@
 class Room < ApplicationRecord
+  belongs_to :session
   before_create do
-    opentok = Opentok::Opentok.new Rails.application.credentials.vonage_api_key, Rails.application.credentials.vonage_api_secret
+    opentok = OpenTok::OpenTok.new ENV['VONAGE_API_KEY'], ENV['VONAGE_API_SECRET']
     session = opentok.create_session
     self.vonage_session_id = session.session_id
   end
