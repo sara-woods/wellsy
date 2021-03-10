@@ -70,7 +70,7 @@
             </h2>
           </div>
 
-        <% elsif !trainer &&  !zoom %>
+        <% elsif !trainer &&  !zoom && !review %>
                     <div class="numbers">
               <h2>
                 <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
