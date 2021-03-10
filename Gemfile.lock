@@ -106,10 +106,14 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.18.1)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
+    jwt (2.2.2)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -137,12 +141,18 @@ GEM
       money (~> 6.13.2)
       railties (>= 3.0)
     msgpack (1.4.2)
+    multi_xml (0.6.0)
     netrc (0.11.0)
     nio4r (2.5.5)
     nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
+    opentok (4.2.0)
+      activesupport (>= 2.0)
+      addressable (~> 2.3)
+      httparty (>= 0.18.0)
+      jwt (>= 1.5.6)
     orm_adapter (0.5.0)
     pg (1.2.3)
     pry (0.13.1)
@@ -284,7 +294,11 @@ DEPENDENCIES
   font-awesome-sass
   jbuilder (~> 2.7)
   listen (~> 3.2)
+
+  opentok
+
   money-rails
+
   pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails
