@@ -41,14 +41,40 @@
           <p id="duration"> <%= ((session.end_time - session.start_time) / 60).round %> min </p>
         </div>
 
+        
+        <% if upcoming %>
+          <%= link_to "Join Live Session", room_path(session.room), class: "btn btn-primary"  %>
+
+
+        <% end %>
+        
+
 
         
+        <% if past %>
+          <% if booking.attended %>
+            <%= link_to "Review", new_session_review_path(session), class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+        
+        
+
+
+
+
+
+
           <div class="numbers">
             <h2>
               <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
                         £<%=   money_without_cents session.price %>
             </h2>
           </div>
+
+
+
+
+
       </div>
 
       <div class="image-holder" style="background-image: url(<%= url_for(session.activity.category.photo) %>)">
@@ -57,5 +83,21 @@
 
     </div>
 
+
+        <% if upcoming %>
+
+
+          <div id="zoom-calendar-buttons" class="d-flex flex-column">
+            <div title="Add to Calendar" class="addeventatc">
+              <p style="color: white !important"></i> <i class="far fa-calendar-alt"></i></p>
+              <span class="start"><%= session.start_time %></span>
+              <span class="end"><%= ((session.end_time - session.start_time) / 60) %></span>
+              <span class="timezone">Europe/London</span>
+              <span class="title"><%= session.activity.name %></span>
+              <span class="description"><%= session.activity.name %><br>by <%= session.activity.user.name %></span>
+              <span class="location">Class Link: <%= room_path(session.room) %></span>
+            </div>
+          </div>
+        <% end %>
 
 </div>
