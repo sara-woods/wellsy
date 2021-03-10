@@ -16,24 +16,24 @@
           <%= link_to user_path(session.activity.user), class: "trainer-link" do %>
             <h6>by <%= session.activity.user.name %></h6>
           <% end %>
-          
-           
+
+
            <% if session.activity.user.average_rating == 0 %>
               <p id="no-rating">No rating yet</p>
              <%# <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p> %>
            <% else %>
             <div class="d-flex justify-content-start  align-items-end">
               <% session.activity.user.average_rating.round.times do %>
-                <p><i class='fas fa-star'></i></p> 
+                <p><i class='fas fa-star'></i></p>
               <% end %>
               <% (5 - session.activity.user.average_rating).round.times do %>
-                <p><i class='far fa-star'></i></p> 
+                <p><i class='far fa-star'></i></p>
               <% end %>
               <p id="average"><%= session.activity.user.average_rating %></p>
             </div>
           <% end %>
-                    
-          
+
+
         </div>
         <div class="info-bottom">
           <p> <%= session.start_time.strftime("%A %d.%m.%y") %> </p>
