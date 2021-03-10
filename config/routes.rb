@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   delete "/sessions_delete/:id", to: "sessions#destroy", as: :session_delete
 
   devise_for :users, :controllers => { :registrations => :registrations }
-  
+
   root to: 'pages#home'
   get "my_bookings", to: "sessions#my_bookings"
   get :thank_you, to: "pages#thank_you"
   get :my_profile, to: "pages#my_profile"
 
   resources :sessions, only: [:index, :edit] do
-    resources :bookings, only: [:create]
+    # resources :bookings, only: [:create]
     resources :reviews, only: [:new, :create]
   end
 
@@ -26,6 +26,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+  resources :orders, only: [:show, :create]
 
+  get '/create_booking' =>'bookings#create', :as => :booking_create
+
+  get '/checkout' =>'orders#checkout', :as => :checkout
 
 end

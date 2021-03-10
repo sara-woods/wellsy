@@ -26,6 +26,7 @@ bio_array = [
             ]
 
 
+
 trainer_images = ["https://images.unsplash.com/photo-1597347343908-2937e7dcc560?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
 "https://images.unsplash.com/flagged/photo-1566064352554-f36ef0ef23b2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
 "https://images.unsplash.com/photo-1529516548873-9ce57c8f155e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
@@ -58,7 +59,7 @@ trainee_images=["https://images.unsplash.com/flagged/photo-1570612861542-284f4c1
 "https://images.unsplash.com/photo-1551854590-dc9c6265b1b1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OXx8YXNpYW4lMjB3b21hbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 ]
 
-
+puts "Creating trainers...."
 #trainers
 10.times do
   user = User.new(name: Faker::Name.name,
@@ -72,6 +73,7 @@ trainee_images=["https://images.unsplash.com/flagged/photo-1570612861542-284f4c1
               user.save!
 end
 
+puts "Creating trainees..."
 #trainees
 10.times do
   user = User.new(name: Faker::Name.name,
@@ -83,10 +85,7 @@ end
               user.save!
 end
 
-
-
-
-
+puts "Patience you must have, my young padawan."
 
 
 #categories
@@ -103,10 +102,6 @@ categories = {
   "Pilates": "https://images.unsplash.com/photo-1518611012118-696072aa579a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" ,
   "Shadow Boxing": "https://images.unsplash.com/photo-1593352216894-89108a0d2653?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   "Core Workout": "https://images.unsplash.com/photo-1516208398649-d5d401ba8c49?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80"}
-
-# 5.times do
-#   category = Category.create!(name: category_array.sample)
-# end
 
 
 activity_name_array = ["Get In Shape", "Yoga Basics", "Triple Tone", "Full Body Circuit", "Intense Bands", "Full-Body Starter", "Pure Pilates", "Intense Shadow Boxing", "Let's Core"]
@@ -125,11 +120,7 @@ description_array = [
                     ]
 
 
-# categories new
-# category_array.each do |category|
-#   category = Category.create!(name: category)
-# end
-
+puts "Creating categories..."
 categories.each do |category, url|
   file = URI.open(url)
   category = Category.new(name: category)
@@ -137,11 +128,11 @@ categories.each do |category, url|
   category.save
 end
 
-   # category.photo.attach(io: URI.open(categories), filename: 'nes.png', content_type: 'image/png')
-   #            category.save!
 
+
+puts "Creating activities..."
 #activities new
-2.times do
+2.times  do
   activity_name_array.each_with_index do |activity_name, i|
     activity = Activity.new(name: activity_name,
                 user_id: User.where(trainer: true).pluck(:id).sample,
@@ -152,20 +143,25 @@ end
 end
 
 
-
+puts "Creating sessions..."
 #sessions
 40.times do
-  starttime = (((DateTime.now - 10.days)..(DateTime.now + 10.days)).to_a.sample + rand(24).hours).change(min:0)
-  Session.create!(min_participants: rand(1..5), max_participants: rand(8..10), start_time: starttime,
+  starttime = (((DateTime.now - 10.days)..(DateTime.now + 20.days)).to_a.sample + rand(24).hours).change(min:0)
+  Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: starttime,
   end_time: starttime + 1.hour,
-    price: rand(5..20), activity_id: Activity.pluck(:id).sample, confirmed: false)
+    price_cents: rand(500..2000), activity_id: Activity.pluck(:id).sample, confirmed: false)
 end
 
+Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 03, 12, 18, 00, 0),
+end_time: DateTime.new(2021, 03, 12, 19, 00, 0),
+  price_cents: rand(500..2000), activity_id: Activity.pluck(:id).sample, confirmed: false)
 
+puts "Creating bookings..."
 #bookings
-50.times do
-  Booking.create(user_id: User.where(trainer: false).pluck(:id).sample,
-  session_id: Session.pluck(:id).sample,
+60.times do
+  user_id = User.pluck(:id).sample
+  Booking.create!(user_id: user_id,
+  session_id: Session.all.reject { |session| session.attendees.pluck(:id).include?(user_id) }.pluck(:id).sample,
   attended: true )
 end
 
@@ -185,9 +181,10 @@ fake_reviews = ["It was my first time doing spin and I learned a lot from it. Ca
 "Looking forward to coming back!",
 "It was ok"]
 
-20.times do
+puts "Creating reviews..."
+30.times do
   Review.create(content: fake_reviews.sample,
-  rating: rand(2..5),
+  rating: rand(3..5),
   user_id: User.where(trainer: false).pluck(:id).sample,
   session_id: Session.pluck(:id).sample)
 end

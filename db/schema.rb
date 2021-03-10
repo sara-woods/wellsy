@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_03_10_150856) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +65,19 @@ ActiveRecord::Schema.define(version: 2021_03_10_150856) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "session_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "session_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_orders_on_session_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
@@ -88,11 +103,11 @@ ActiveRecord::Schema.define(version: 2021_03_10_150856) do
     t.datetime "end_time"
     t.integer "min_participants"
     t.integer "max_participants"
-    t.integer "price"
     t.bigint "activity_id", null: false
     t.boolean "confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "price_cents", default: 0, null: false
     t.index ["activity_id"], name: "index_sessions_on_activity_id"
   end
 
@@ -117,6 +132,8 @@ ActiveRecord::Schema.define(version: 2021_03_10_150856) do
   add_foreign_key "activities", "users"
   add_foreign_key "bookings", "sessions"
   add_foreign_key "bookings", "users"
+  add_foreign_key "orders", "sessions"
+  add_foreign_key "orders", "users"
   add_foreign_key "reviews", "sessions"
   add_foreign_key "reviews", "users"
   add_foreign_key "sessions", "activities"

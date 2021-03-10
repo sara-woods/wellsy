@@ -6,6 +6,10 @@ class Session < ApplicationRecord
   has_one :room
   after_create :create_room
 
+
+  delegate :category, to: :activity
+
+
   validates :start_time, presence: true
   validates :end_time, presence: true
   validates :max_participants, presence: true
@@ -14,12 +18,19 @@ class Session < ApplicationRecord
 
   validate :class_size
 
+  monetize :price_cents
+
   def empty?
     bookings.empty?
   end
 
+
   def create_room
     Room.create(session: self)
+  end
+  
+  def full?
+    max_participants == bookings.count
   end
 
   private

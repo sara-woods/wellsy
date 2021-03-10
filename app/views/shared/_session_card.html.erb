@@ -3,7 +3,6 @@
     <div type="button" class="session-card" data-toggle="modal" data-target="#session-<%= session.id %>">
 
 
-
       <% if session.activity.user.respond_to?(:photo) && session.activity.user.photo.attached? %>
         <%= cl_image_tag session.activity.user.photo.key, class: "card-session-user avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
       <% else %>
@@ -13,24 +12,19 @@
       <div class="card-session-info">
         <div class="info-top">
           <h3><%= session.activity.name %></h3>
-          <%= link_to user_path(session.activity.user), class: "trainer-link" do %>
-            <h6>by <%= session.activity.user.name %></h6>
-          <% end %>
 
 
-           <% if session.activity.user.average_rating == 0 %>
-              <p id="no-rating">No rating yet</p>
-             <%# <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p> %>
-           <% else %>
-            <div class="d-flex justify-content-start  align-items-end">
-              <% session.activity.user.average_rating.round.times do %>
-                <p><i class='fas fa-star'></i></p>
-              <% end %>
-              <% (5 - session.activity.user.average_rating).round.times do %>
-                <p><i class='far fa-star'></i></p>
-              <% end %>
-              <p id="average"><%= session.activity.user.average_rating %></p>
-            </div>
+          <div class="trainer-link-div">
+            <%= link_to user_path(session.activity.user), class: "trainer-link" do %>
+              <h6>by <%= session.activity.user.name %></h6>
+            <% end %>
+          </div>
+
+
+          <% if session.activity.user.average_rating == 0 %>
+            <p id="no-rating">No rating yet</p>
+          <% else %>
+            <%= render "users/stars", average_rating: session.activity.user.average_rating %>
           <% end %>
 
 
@@ -50,6 +44,7 @@
 
 
         <% if trainer %>
+
 
         <% if session.activity.user == current_user || Booking.where(user:current_user, session:session).any? %>
           <%= link_to "Join Live Session", room_path(session.room), class: "btn btn-primary"  %>
@@ -81,7 +76,25 @@
               <span class="title"><%= session.activity.name %></span>
               <span class="description"><%= session.activity.name %><br>by <%= session.activity.user.name %></span>
               <span class="location">Class Link: <%= room_path(session.room) %></span>
-          </div>
+
+          <% if session.attendees.empty? %>
+            <div class="controls">
+              <ul class="list-inline">
+          
+                <%= link_to session_delete_path(session), method: :delete, data: { confirm: "Are you sure?"} do %>
+                  <li class="list-inline-item"><i class="fas fa-trash-alt"></i></li>
+                <% end %>
+
+                <%= link_to edit_session_path(session), id: "edit-button" do %>
+                  <li class="list-inline-item"><i class="fas fa-edit"></i></li>
+                <% end %>
+              
+              </ul>
+            </div>
+          <% end %>
+
+
+
 
 
         <% if session.activity.user == current_user || Booking.where(user:current_user, session:session).any? %>
@@ -92,13 +105,30 @@
         <% elsif review %>
             <%= link_to "Review", new_session_review_path(session), class: "btn btn-primary" %>
         <% else %>
+
           <div class="numbers">
             <h2>
               <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
-                        £<%= session.price %>
+                        £<%=   money_without_cents session.price %>
             </h2>
           </div>
+
+        <% elsif !trainer &&  !zoom && !review %>
+                    <div class="numbers">
+              <h2>
+                <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
+                          £<%=   money_without_cents session.price %>
+              </h2>
+            </div>
         <% end %>
+          
+
+
+        <% if review %>
+            <%= link_to "Review", new_session_review_path(session), class: "btn btn-primary" %>
+        <% end %>
+          
+
 
       </div>
 
@@ -108,4 +138,22 @@
 
     </div>
 
+
+        <% if zoom %>
+
+          <div id="zoom-calendar-buttons" class="d-flex flex-column">
+              <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary", target: "_blank"  %>
+
+                <div title="Add to Calendar" class="addeventatc m-0 mt-2 ">
+                    <p style="color: white !important; font-size: 1rem;"></i> Add to Calendar</p>
+                    <span class="start"><%= session.start_time %></span>
+                    <span class="end"><%= ((session.end_time - session.start_time) / 60) %></span>
+                    <span class="timezone">Europe/London</span>
+                    <span class="title"><%= session.activity.name %></span>
+                    <span class="description"><%= session.activity.name %><br>by <%= session.activity.user.name %></span>
+                    <span class="location">Zoom Link: <%= session.activity.user.zoom_link %></span>
+                </div>
+               
+          </div>
+        <% end %>
 </div>

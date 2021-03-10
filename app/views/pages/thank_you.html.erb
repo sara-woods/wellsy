@@ -1,20 +1,29 @@
 <% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} thanks you! Now, let's get fit!" %>
 
+<div class="banner" style="background-image: url(<%= image_path('homepage7.png')%>)">
+  <div class="row">
+    <div class="col-12 col-sm-8 col-md-7">
+      <div class="heading">
+       <div>
+          <h1 id="thank-you1">Thank you</h1>
+          <h1 id="thank-you2">Now, let's get fit!</h1>
+          <div class="mt-2">
+            <p id="header-p">View your bookings page for the option to add the session<br>to your calendar and to tune in to the<br>session when it starts.</p>
+          </div>
 
-<div class="banner"  style="background-image: url('https://images.unsplash.com/photo-1470468969717-61d5d54fd036?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2566&q=80')">
 
-    <div class="heading-thanks">
-      <div>
-        <h1>Thank you!</h1>
-        <h6>We have sent you an email with the zoom link for your booked session.</h6>
-        <h1 id="fit"><span>Now, let's get fit!</span></h1>
-      </div>
-      <div>
-        <%= link_to "View my bookings", my_bookings_path, class: "btn btn-primary mt-5" %>
-      </div>
-      <div>
-        <%= link_to "More sessions", sessions_path, class: "btn btn-dark mt-3" %>
+          <div>
+            <%= link_to "My bookings", my_bookings_path, class: "btn btn-primary mt-3" %>
+          </div>
+          <div>
+            <%= link_to "More sessions", sessions_path, class: "btn btn-dark mt-3" %>
+          </div>
+        </div>
       </div>
     </div>
-
+      <div class="col-md-5">
+        <div class="girl" style="background-image: url(<%= image_path('girl-bg2.png')%>)">
+        </div>
+      </div>
+  </div>
 </div>
