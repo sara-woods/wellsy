@@ -10,7 +10,8 @@
     transition: all 0.2s linear;
 
     &:hover {
-      background-color: #2778b1;
+      // background-color: #2778b1;
+      cursor: pointer;
     }
 
 }
