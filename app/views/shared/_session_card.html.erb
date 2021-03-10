@@ -3,7 +3,6 @@
     <div type="button" class="session-card" data-toggle="modal" data-target="#session-<%= session.id %>">
 
 
-
       <% if session.activity.user.respond_to?(:photo) && session.activity.user.photo.attached? %>
         <%= cl_image_tag session.activity.user.photo.key, class: "card-session-user avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
       <% else %>
@@ -60,23 +59,7 @@
           <% end %>
         <% end %>
 
-
-        <% if zoom %>
-
-         <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary" %>
-
-          <div title="Add to Calendar" class="addeventatc">
-              <p style="color: white !important; font-size: 1rem;"></i> Add to Calendar</p>
-              <span class="start"><%= session.start_time %></span>
-              <span class="end"><%= ((session.end_time - session.start_time) / 60) %></span>
-              <span class="timezone">Europe/London</span>
-              <span class="title"><%= session.activity.name %></span>
-              <span class="description"><%= session.activity.name %><br>by <%= session.activity.user.name %></span>
-              <span class="location">Zoom Link: <%= session.activity.user.zoom_link %></span>
-          </div>
-
-
-        <% elsif review %>
+        <% if review %>
             <%= link_to "Review", new_session_review_path(session), class: "btn btn-primary" %>
         <% else %>
           <div class="numbers">
@@ -95,4 +78,22 @@
 
     </div>
 
+
+        <% if zoom %>
+
+          <div id="zoom-calendar-buttons" class="d-flex flex-column">
+              <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary"  %>
+
+                <div title="Add to Calendar" class="addeventatc m-0 mt-2 ">
+                    <p style="color: white !important; font-size: 1rem;"></i> Add to Calendar</p>
+                    <span class="start"><%= session.start_time %></span>
+                    <span class="end"><%= ((session.end_time - session.start_time) / 60) %></span>
+                    <span class="timezone">Europe/London</span>
+                    <span class="title"><%= session.activity.name %></span>
+                    <span class="description"><%= session.activity.name %><br>by <%= session.activity.user.name %></span>
+                    <span class="location">Zoom Link: <%= session.activity.user.zoom_link %></span>
+                </div>
+               
+          </div>
+        <% end %>
 </div>

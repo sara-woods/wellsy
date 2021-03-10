@@ -3,11 +3,16 @@
 }
 
 .addeventatc {
+  z-index: 9999 !important;
   background-color: #35393C !important;
-  font-weight: normal !important;
-  // font-size: 1rem !important;
-  font-family: "Montserrat" !important, sans-serif;
   padding-left: 12px !important;
+  p {
+    margin: 0 !important;
+    font-weight: 400 !important;
+    // font-size: 1rem !important;
+    font-family: "Montserrat", sans-serif !important;
+    text-align: center !important;
+  }
 }
 
 .addeventatc_icon {
