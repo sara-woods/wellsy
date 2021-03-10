@@ -5,6 +5,7 @@ class Session < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_one :room
   after_create :create_room
+  has_many :orders, dependent: :destroy
 
 
   delegate :category, to: :activity

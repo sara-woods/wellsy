@@ -9,12 +9,15 @@
 
 require "open-uri"
 
-Booking.destroy_all
 Session.destroy_all
-Activity.destroy_all
-# User.destroy_all
-Category.destroy_all
 User.destroy_all
+Order.destroy_all
+Booking.destroy_all
+
+Activity.destroy_all
+Category.destroy_all
+
+Review.destroy_all
 
 bio_array = [
             " BS in Physical Education as well as a MS in Exercise Science and Health Promotion. He is a Certified Strength and Conditioning Specialist (CSCS). He has a background in health and fitness as well as athletic performance training with over 20 years of certification and experience in the field. His passion for fitness began through his love of sports and developed as a varsity athlete in basketball.",
@@ -149,12 +152,13 @@ puts "Creating sessions..."
   starttime = (((DateTime.now - 10.days)..(DateTime.now + 20.days)).to_a.sample + rand(24).hours).change(min:0)
   Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: starttime,
   end_time: starttime + 1.hour,
-    price_cents: rand(500..2000), activity_id: Activity.pluck(:id).sample, confirmed: false)
+    price_cents: ("#{rand(5..20)}00").to_i, activity_id: Activity.pluck(:id).sample, confirmed: false)
 end
 
+# Session for Friday
 Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 03, 12, 18, 00, 0),
-end_time: DateTime.new(2021, 03, 12, 19, 00, 0),
-  price_cents: rand(500..2000), activity_id: Activity.pluck(:id).sample, confirmed: false)
+end_time: DateTime.new(2021, 03, 12, 20, 00, 0),
+  price_cents: ("#{rand(5..20)}00").to_i, activity_id: Activity.pluck(:id).sample, confirmed: false)
 
 puts "Creating bookings..."
 #bookings
