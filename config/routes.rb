@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get :my_profile, to: "pages#my_profile"
 
   resources :sessions, only: [:index, :edit] do
-    resources :bookings, only: [:create]
+    # resources :bookings, only: [:create]
     resources :reviews, only: [:new, :create]
   end
 
@@ -25,6 +25,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+  resources :orders, only: [:show, :create]
 
+  get '/create_booking' =>'bookings#create', :as => :booking_create
+
+  get '/checkout' =>'orders#checkout', :as => :checkout
 
 end

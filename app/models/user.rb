@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :sessions, through: :activities
   has_many :reviews, dependent: :destroy
   has_one_attached :photo
+  has_many :orders
 
   validates :name, presence: true
   validates :email, uniqueness: true
@@ -25,7 +26,7 @@ class User < ApplicationRecord
         average_rating += review.rating
       end
     end
-    
+
     if count == 0
       return 0
     else
