@@ -152,8 +152,8 @@ puts "Creating sessions..."
     price_cents: rand(5..20), activity_id: Activity.pluck(:id).sample, confirmed: false)
 end
 
-Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(201, 03, 12, 18, 00, 0),
-end_time: DateTime.new(201, 03, 12, 19, 00, 0),
+Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 03, 12, 18, 00, 0),
+end_time: DateTime.new(2021, 03, 12, 19, 00, 0),
   price: rand(5..20), activity_id: Activity.pluck(:id).sample, confirmed: false)
 
 puts "Creating bookings..."
