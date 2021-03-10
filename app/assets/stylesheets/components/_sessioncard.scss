@@ -85,8 +85,8 @@
   align-self: flex-end;
 }
 
-.fa-star  {
-  color: rgb(173, 173, 173);
+.fa-star, .fa-star-half-alt  {
+  color: rgb(248, 203, 53);
   font-size: 14px;
 }
 
@@ -125,12 +125,15 @@
 
 
 
-
 .trainer-link  {
   color: $dark-gray;
   &:hover {
-    color: $red;
+    color: #3FAEFF;
   }
+}
+
+.trainer-link-div {
+  width: max-content;
 }
 
 .review {
@@ -149,11 +152,22 @@
   font-style: italic;
   color: gray;
 }
- 
+
 #average {
   margin-left: 4px;
   font-size: 14px;
   padding-bottom: 2px;
+}
+
+.color-red {
+  color: $red;
+}
+
+#zoom-calendar-buttons {
+  position: absolute;
+  min-width: 172px;
+  left: 608px;
+  bottom: 13px;
 }
 
 

@@ -1,23 +1,16 @@
+<% content_for :meta_title, "Trainer profile for #{@user.name} on #{DEFAULT_META["meta_product_name"]}" %>
+
 <div class="profile-banner">
   <div class="container">
     <h1 id="trainer-header-1">Trainer Profile</h1>
     <h2 id="trainer-header-2"><%= @user.name %></h2>
 
     <div class="show-rating">
-           <% if @user.average_rating == 0 %>
-              <p id="no-rating">No rating yet</p>
-             <%# <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p> %>
-           <% else %>
-            <div class="d-flex justify-content-start  align-items-end">
-              <% @user.average_rating.round.times do %>
-                <p><i class='fas fa-star'></i></p> 
-              <% end %>
-              <% (5 - @user.average_rating).round.times do %>
-                <p><i class='far fa-star'></i></p> 
-              <% end %>
-              <p id="average"><%= @user.average_rating %></p>
-            </div>
-          <% end %>
+      <% if @user.average_rating == 0 %>
+        <p id="no-rating">No rating yet</p>
+      <% else %>
+        <%= render "users/stars", average_rating: @user.average_rating %>
+      <% end %>
     </div>
 
     <% if @user.respond_to?(:photo) && @user.photo.attached? %>
@@ -52,7 +45,7 @@
           <div class="row profilecard">
             <% @sessions.each do |session| %>
               <%= render "shared/session_card", session: session, review: false, trainer: false, zoom: false %>
-              <%= render "sessions/show", session: session %>
+              <%= render "sessions/show", session: session, pay: true %>
             <% end %>
           </div>
         </div>

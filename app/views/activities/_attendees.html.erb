@@ -1,4 +1,4 @@
-<div class="modal" id= "<%=attendees%>-activity-<%=activity.id%>" tabindex="-1" role="dialog">
+<div class="modal" id= "<%=attendees%>-session-<%=session.id%>" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -44,7 +44,8 @@
       </div>
 
       <div class="modal-footer attendee form-actions">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+        <button type="button" class="btn btn-primary mb-2" data-dismiss="modal">Confirm</button>
+        <%= link_to "Back", activities_path, class: "btn btn-dark" %>
       </div>
     </div>
   </div>

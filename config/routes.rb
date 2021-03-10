@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   delete "/sessions_delete/:id", to: "sessions#destroy", as: :session_delete
 
   devise_for :users, :controllers => { :registrations => :registrations }
-  
+
   root to: 'pages#home'
   get "my_bookings", to: "sessions#my_bookings"
   get :thank_you, to: "pages#thank_you"
