@@ -1,0 +1,6 @@
+meta_product_name: "Wellsy"
+meta_title: "Wellsy - join a live workout from home"
+meta_description: "Wellsy connects freelance trainers with anyone who wants
+to join classes from the comfort of their own home."
+meta_image: "meta-image.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards

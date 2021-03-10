@@ -1,3 +1,5 @@
+<% content_for :meta_title, "Dashboard for #{current_user.name} on #{DEFAULT_META["meta_product_name"]}" %>
+
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-12">
@@ -58,7 +60,7 @@
               <p class="text-center">No upcoming sessions available</p>
             <% end %>
             <% activity.sessions.where("sessions.end_time >= ?", DateTime.now).order(start_time: :asc).each do |session| %>
-             <div type="button"  data-toggle="modal" data-target="#upcomming-activity-<%= activity.id %>">
+             <div type="button"  data-toggle="modal" data-target="#upcomming-session-<%= session.id %>">
               <%= render "shared/session_card", session: session, trainer: true, review: false, zoom: false %>
             </div>
               <%= render "attendees", attendees: "upcomming", activity: activity, session: session %>
@@ -74,7 +76,7 @@
             <% end %>
 
             <% activity.sessions.where("sessions.end_time < ?", DateTime.now).order(start_time: :desc).each do |session| %>
-              <div type="button"  data-toggle="modal" data-target="#past-activity-<%= activity.id %>">
+              <div type="button"  data-toggle="modal" data-target="#past-session-<%= session.id %>">
                 <%= render "shared/session_card", session: session, trainer: false, review: false, zoom: false %>
               </div>
               <%= render "attendees", attendees: "past", activity: activity, session: session %>

@@ -66,7 +66,7 @@ trainee_images=["https://images.unsplash.com/flagged/photo-1570612861542-284f4c1
               password: "123456",
               trainer: true,
               bio: bio_array.sample,
-              zoom_link: "zoom.us 19xLS"
+              zoom_link: "https://us05web.zoom.us/j/4490529691?pwd=bnhmWmJwbStoUUprOUREL3pEWTVGQT09"
               )
               user.photo.attach(io: URI.open(trainer_images.sample), filename: 'nes.png', content_type: 'image/png')
               user.save!
@@ -154,8 +154,8 @@ end
 
 
 #sessions
-20.times do
-  starttime = (((DateTime.now - 10.days)..(DateTime.now + 10.days)).to_a.sample + rand(24).hours).change(min:0)
+50.times do
+  starttime = (((DateTime.now - 10.days)..(DateTime.now + 20.days)).to_a.sample + rand(24).hours).change(min:0)
   Session.create!(min_participants: rand(1..5), max_participants: rand(8..10), start_time: starttime,
   end_time: starttime + 1.hour,
     price: rand(5..20), activity_id: Activity.pluck(:id).sample, confirmed: false)
@@ -171,5 +171,24 @@ end
 
 
 
+fake_reviews = ["It was my first time doing spin and I learned a lot from it. Can’t wait to do it again!",
+"It’s great for people of all levels, and manages to do a lot in one hour without feeling rushed. It’s my favorite class I’ve ever taken!",
+"They both give you enough instruction on what you’ll be doing next, while talking through the workout, specifically at points where they know you’ll slack off a little or need an extra boost.",
+"You walk out feeling exhausted but amazing.",
+"Very nicely done.",
+"Nothing to complain about",
+"The most energetic and motivating instructor",
+"Definitely will be there again",
+"You get a great workout, burn tons of calories and have a great time doing it.",
+"It is really amazing to come back from vacations in a better shape than when I left! Trainings are painful (in a good way :)) and never boring! ",
+"Very good trainer, motivated and great relationships with clients!",
+"Looking forward to coming back!",
+"It was ok"]
 
+20.times do
+  Review.create(content: fake_reviews.sample,
+  rating: rand(2..5),
+  user_id: User.where(trainer: false).pluck(:id).sample,
+  session_id: Session.pluck(:id).sample)
+end
 

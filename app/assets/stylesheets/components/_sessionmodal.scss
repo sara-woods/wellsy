@@ -2,6 +2,10 @@
   border: none;
 }
 
+.modal {
+  z-index: 99999;
+}
+
 .modal-header {
   background-color: #35393C;
   color: white;
@@ -94,7 +98,7 @@
 .trainer-modal-link  {
   color: white;
   &:hover {
-    color: $red;
+    color: #3FAEFF;
     text-decoration: none;
   }
 }

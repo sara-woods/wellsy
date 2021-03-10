@@ -12,15 +12,21 @@
     font-weight: 300;
   }
   #fit {
-    // opacity: 0.6;
     color: black;
     font-size: 4rem;
-    span {
-      // background-color: white;
-    }
   }
 }
 
+#thank-you1,  #thank-you2 {
+  font-weight: 900;
+  font-size: 54px;
+  color: $red;
+  margin: 0;
+}
+
+#thank-you2 {
+  color: $dark-gray;
+}
 
 // .container-thanks  {
 //     text-align: center;

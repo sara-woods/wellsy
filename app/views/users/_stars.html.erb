@@ -1,0 +1,32 @@
+
+<div class="d-flex justify-content-start  align-items-end">
+  <% average_rating.floor.times do %>
+    <p><i class='fas fa-star'></i></p>
+  <% end %>
+
+  <% if (average_rating.round(1) - average_rating.floor) < 0.25  %>
+    <% (5 - average_rating.floor).times do %>
+      <p><i class='far fa-star'></i></p>
+    <% end %>
+
+  <% elsif (average_rating.round(1) - average_rating.floor) > 0.75 %>
+    <p><i class='fas fa-star'></i></p>
+    <% (5 - average_rating.round).times do %>
+      <p><i class='far fa-star'></i></p>
+    <% end %>
+
+  <% else %>
+    <p><i class="fas fa-star-half-alt"></i></p>
+    <% (5 - average_rating.ceil).times do %>
+      <p><i class='far fa-star'></i></p>
+    <% end %>
+  <% end %>
+
+  
+  <p id="average"><%= average_rating %></p>
+</div>
+
+
+
+
+
