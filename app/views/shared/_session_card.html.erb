@@ -58,21 +58,30 @@
               
               </ul>
             </div>
+
           <% end %>
+            <div class="numbers">
+              <h2>
+                <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
+                          £<%=  money_without_cents session.price %>
+              </h2>
+            </div>
+        <% elsif !trainer &&  !zoom %>
+                    <div class="numbers">
+              <h2>
+                <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
+                          £<%=  money_without_cents session.price %>
+              </h2>
+            </div>
         <% end %>
+          
+
 
         <% if review %>
             <%= link_to "Review", new_session_review_path(session), class: "btn btn-primary" %>
         <% end %>
           
-        <% if !review && !zoom %>
-          <div class="numbers">
-            <h2>
-              <span class="participants"> <%= session.max_participants - session.bookings.count %> / <%= session.max_participants %> available </span>
-                        £<%=  money_without_cents session.price %>
-            </h2>
-          </div>
-        <% end %>
+
 
       </div>
 
