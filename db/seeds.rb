@@ -59,7 +59,7 @@ trainee_images=["https://images.unsplash.com/flagged/photo-1570612861542-284f4c1
 "https://images.unsplash.com/photo-1551854590-dc9c6265b1b1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OXx8YXNpYW4lMjB3b21hbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 ]
 
-puts "Creating trainers..."
+puts "Creating trainers...."
 #trainers
 10.times do
   user = User.new(name: Faker::Name.name,
