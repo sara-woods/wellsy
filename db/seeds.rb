@@ -159,7 +159,7 @@ end_time: DateTime.new(2021, 03, 12, 19, 00, 0),
 puts "Creating bookings..."
 #bookings
 60.times do
-  user_id = User.pluck(:id).sample
+  user_id = User.where(trainer: false).pluck(:id).sample
   Booking.create!(user_id: user_id,
   session_id: Session.all.reject { |session| session.attendees.pluck(:id).include?(user_id) }.pluck(:id).sample,
   attended: true )

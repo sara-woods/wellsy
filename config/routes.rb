@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rooms
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   put "/sessions_update/:id", to: "sessions#update", as: :session_update

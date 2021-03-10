@@ -3,6 +3,8 @@ class Session < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :attendees, through: :bookings, source: :user
   has_many :reviews, dependent: :destroy
+  has_one :room
+  after_create :create_room
 
 
   delegate :category, to: :activity
@@ -22,6 +24,11 @@ class Session < ApplicationRecord
     bookings.empty?
   end
 
+
+  def create_room
+    Room.create(session: self)
+  end
+  
   def full?
     max_participants == bookings.count
   end
