@@ -61,7 +61,7 @@
 
             
             <% if pay %>
-              <h2><%= link_to "Add for £#{session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary buy" %></h2>
+              <h2><%= link_to "Add for £#{money_without_cents session.price}", session_bookings_path(session), method: :post, class: "btn btn-primary buy" %></h2>
             <% else %>
               <h6 class="mr-5 color-red">You have already payed for this session</h6>
             <% end %>
