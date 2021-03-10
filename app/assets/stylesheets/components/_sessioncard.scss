@@ -129,8 +129,12 @@
 .trainer-link  {
   color: $dark-gray;
   &:hover {
-    color: $red;
+    color: #3FAEFF;
   }
+}
+
+.trainer-link-div {
+  width: max-content;
 }
 
 .review {
