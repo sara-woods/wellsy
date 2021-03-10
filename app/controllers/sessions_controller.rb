@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     end
     if params.dig(:filters, :price).present? && params.dig(:filters, :price) != 0
       max_price = params[:filters][:price].split("£")[1].to_i
-      @sessions = Session.where("price_cents < ?", max_price * 100)
+      @sessions = @sessions.select { |session| session.price_cents < max_price * 100 }
     end
     if params.dig(:filters, :day).present? && params.dig(:filters, :day) != 0
       @sessions = @sessions.select { |session| session.start_time.strftime("%A") == params[:filters][:day] }
