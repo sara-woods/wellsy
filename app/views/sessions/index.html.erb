@@ -17,19 +17,22 @@
   <% end %>
 </div>
 
-<% if @sessions.empty? %>
-  <div class="noresult-container text-center">
-    <p><em>Sorry, no sessions found...</em></p>
-  </div>
+
+<!-- filters -->
+
+  <%= simple_form_for :filters, url: sessions_path, remote: true, method: :get do |f| %>
+   <div class="filter">
+
+   <%= f.input :category, as: :select, label: false, collection:  Category.all, include_blank: "Category", value_method: :id, onchange: "this.form.submit()", input_html: {class: "category-tag-filter" }, selected: params.dig(:filters, :category)%>
+    <%= f.input :price, as: :select, label: false, collection:  ["<£10", "<£15", "<£20", "<£30" ], include_blank: "Price", onchange: "this.form.submit()", input_html: { class: "category-tag-filter" }, selected: params.dig(:filters, :price) %>
+     <%= f.input :day, as: :select, label: false, collection:  Date::DAYNAMES.rotate, include_blank: "Day", onchange: "this.form.submit()", input_html: { class: "category-tag-filter" }, selected: params.dig(:filters, :day) %>
+   <%= f.submit "Filter", class: "btn btn-primary" %>
+ </div>
 <% end %>
 
-
 <div class="container mb-5 mt-2">
-  <div class="row">
-    <% @sessions.each do |session| %>
-      <%= render "shared/session_card", session: session, review: false, trainer: false, zoom: false %>
-      <%= render "show", session: session,  pay: true %>
-    <% end %>
+  <div class="row" id="index-sessions">
+    <%= render 'sessions', sessions: @sessions %>
   </div>
 </div>
 
