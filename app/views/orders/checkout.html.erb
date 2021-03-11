@@ -1,11 +1,35 @@
-<div class="container chcontainer">
+
+<!-- div 1  -->
+
+
+<div class="container">
   <div class="row py-4">
     <div class="col chhead">
       <h1>Checkout</h1>
       <h2>Get Ready to change your life</h2>
 
-      <div class="col-md-3"><%= image_tag @order.session.category.photo, width: '100%' %></div>
+    </div>
+  </div>
+</div>
 
+
+
+
+<!-- div 2  -->
+
+
+<div class="container mb-5 mt-2">
+  <div class="row" id="index-sessions">
+    <%= render 'sessions/session_trainee', session: @order.session, upcoming: false, past: false %>
+  </div>
+</div>
+
+
+
+
+<!-- div 3 -->
+
+    <div class="col chhead">
       <div class="container ch">
         <p>Cart total: <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
         <button id="pay" class="btn btn-primary">Pay</button>
@@ -21,14 +45,3 @@
         </script>
       </div>
     </div>
-  </div>
-</div>
-
-
-
-
-<div class="container mb-5 mt-2">
-  <div class="row" id="index-sessions">
-    <%= render 'sessions/session_trainee', session: @order.session, upcoming: false, past: false %>
-  </div>
-</div>
