@@ -29,12 +29,15 @@
                 <h4> <%= current_user.email %></h4>
               </div>
 
+              <% if current_user.trainer %>
               <div class="d-flex">
                 <div class="info-icon">
                   <h4><i class="fas fa-laptop"></i></h4>
                 </div>
                 <h4> <%= current_user.zoom_link %> </h4>
               </div>
+              <% end %>
+              
 
             </div>           
           </div>

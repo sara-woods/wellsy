@@ -43,7 +43,7 @@
 
         
         <% if upcoming %>
-          <%= link_to "Join Live Session", room_path(session.room), class: "btn btn-primary"  %>
+          <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary" %>
 
 
         <% end %>
@@ -85,8 +85,6 @@
 
 
         <% if upcoming %>
-
-
           <div id="zoom-calendar-buttons" class="d-flex flex-column">
             <div title="Add to Calendar" class="addeventatc">
               <p style="color: white !important"></i> <i class="far fa-calendar-alt"></i></p>

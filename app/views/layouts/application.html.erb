@@ -41,7 +41,7 @@
 
     <div class="page-container">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
-      <div class="container-fluid content-container"><%= yield %></div>
+      <div class="<%= "container-fluid" if params[:action] == "home" %> content-container"><%= yield %></div>
       <div class="footer-container"><%= render "shared/footer" %></div>
     </div>
 
