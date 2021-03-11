@@ -41,7 +41,6 @@ trainer_images = ["https://images.unsplash.com/photo-1597347343908-2937e7dcc560?
 "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
 "https://images.unsplash.com/photo-1485727749690-d091e8284ef3?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
 "https://images.unsplash.com/photo-1554244933-d876deb6b2ff?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8Z3ltJTIwYmxhY2slMjB3b21hbnxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60",
-"https://images.unsplash.com/photo-1598136490929-292a0a7890c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjN8fHdvcmtvdXR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 "https://images.unsplash.com/photo-1592704708371-7bf1b1a19d6f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8eW9nYSUyMGJsYWNrJTIwd29tYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"]
 
 trainee_images=["https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
@@ -53,7 +52,6 @@ trainee_images=["https://images.unsplash.com/flagged/photo-1570612861542-284f4c1
 "https://images.unsplash.com/photo-1535643302794-19c3804b874b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
 "https://images.unsplash.com/photo-1589216996730-20b7fdef7216?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
 "https://images.unsplash.com/photo-1590697442615-a381b5b557c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-"https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
 "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
 "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjl8fHlvZ2ElMjBibGFjayUyMHdvbWFufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 "https://images.unsplash.com/photo-1543486958-d783bfbf7f8e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8c2VsZmllfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
@@ -70,7 +68,7 @@ puts "Creating trainers...."
               password: "123456",
               trainer: true,
               bio: bio_array.sample,
-              zoom_link: "https://us05web.zoom.us/j/4490529691?pwd=bnhmWmJwbStoUUprOUREL3pEWTVGQT09"
+              zoom_link: "https://us05web.zoom.us/j/85926576978?pwd=TGFQdkk5R3dqVmpVZFZrdlFjYmZhUT09"
               )
               user.photo.attach(io: URI.open(trainer_images.sample), filename: 'nes.png', content_type: 'image/png')
               user.save!
@@ -78,6 +76,7 @@ end
 
 puts "Creating trainees..."
 #trainees
+trainees = []
 10.times do
   user = User.new(name: Faker::Name.name,
               email: Faker::Internet.email,
@@ -86,6 +85,7 @@ puts "Creating trainees..."
               )
               user.photo.attach(io: URI.open(trainee_images.sample), filename: 'nes.png', content_type: 'image/png')
               user.save!
+              trainees << user
 end
 
 puts "Patience you must have, my young padawan."
@@ -135,6 +135,7 @@ end
 
 puts "Creating activities..."
 #activities new
+activities = []
 2.times  do
   activity_name_array.each_with_index do |activity_name, i|
     activity = Activity.new(name: activity_name,
@@ -142,6 +143,7 @@ puts "Creating activities..."
                 description: description_array.sample,
                 category_id: Category.find_by_name(category_array[i]).id)
     activity.save!
+    activities <<  activity
   end
 end
 
@@ -171,7 +173,7 @@ end
 
 
 
-fake_reviews = ["It was my first time doing spin and I learned a lot from it. Can’t wait to do it again!",
+fake_reviews = ["It was my first time trying this and I learned a lot from it. Can’t wait to do it again!",
 "It’s great for people of all levels, and manages to do a lot in one hour without feeling rushed. It’s my favorite class I’ve ever taken!",
 "They both give you enough instruction on what you’ll be doing next, while talking through the workout, specifically at points where they know you’ll slack off a little or need an extra boost.",
 "You walk out feeling exhausted but amazing.",
@@ -192,4 +194,132 @@ puts "Creating reviews..."
   user_id: User.where(trainer: false).pluck(:id).sample,
   session_id: Session.pluck(:id).sample)
 end
+
+
+
+
+
+
+
+############################# FOR PRESENTATION ################################
+
+# Create trainer
+
+  trainer = User.new(name: "Nicky Connor",
+              email: "nicky@gmail.com",
+              password: "123456",
+              trainer: true,
+              bio: bio_array.sample,
+              zoom_link: "https://us05web.zoom.us/j/85926576978?pwd=TGFQdkk5R3dqVmpVZFZrdlFjYmZhUT09"
+              )
+              trainer.photo.attach(io: URI.open("https://images.unsplash.com/photo-1598136490929-292a0a7890c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjN8fHdvcmtvdXR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"), filename: 'nes.png', content_type: 'image/png')
+              trainer.save!
+
+
+activity = Activity.new(name: activity_name_array[2],
+            user_id: trainer.id,
+            description: description_array.sample,
+            category_id: Category.find_by_name(category_array[2]).id)
+activity.save!
+
+
+session1 = Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 03, 12, 18, 00, 0),
+end_time: DateTime.new(2021, 03, 12, 20, 00, 0),
+  price_cents: ("#{rand(5..20)}00").to_i, activity_id: activity.id, confirmed: false)
+
+session2 = Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 03, 06, 18, 00, 0),
+end_time: DateTime.new(2021, 03, 06, 19, 00, 0),
+  price_cents: ("#{rand(5..20)}00").to_i, activity_id: activity.id, confirmed: false)
+
+session3 =  Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 03, 21, 18, 00, 0),
+end_time: DateTime.new(2021, 03, 21, 19, 00, 0),
+  price_cents: ("#{rand(5..20)}00").to_i, activity_id: activity.id, confirmed: false)
+
+session4 =  Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 02, 27, 15, 00, 0),
+end_time: DateTime.new(2021, 02, 27, 16, 00, 0),
+  price_cents: ("#{rand(5..20)}00").to_i, activity_id: activity.id, confirmed: false)
+
+# Create random bookings for session 1
+Booking.create!(user_id: trainees[0].id,
+session_id: session1.id,
+attended: true )
+
+Booking.create!(user_id: trainees[1].id,
+session_id: session1.id,
+attended: true )
+
+Booking.create!(user_id: trainees[2].id,
+session_id: session1.id,
+attended: true )
+
+# Createbookings for session 2
+
+Booking.create!(user_id: trainees[3].id,
+session_id: session2.id,
+attended: true )
+
+Booking.create!(user_id: trainees[4].id,
+session_id: session2.id,
+attended: true )
+
+Booking.create!(user_id: trainees[5].id,
+session_id: session2.id,
+attended: true )
+
+# Createbookings for session 3
+
+Booking.create!(user_id: trainees[6].id,
+session_id: session3.id,
+attended: true )
+
+Booking.create!(user_id: trainees[7].id,
+session_id: session3.id,
+attended: true )
+
+# Revviews for trainer
+
+Review.create(content: fake_reviews.sample,
+rating: rand(3..5),
+user_id: trainees[0].id,
+session_id: session3.id)
+
+Review.create(content: fake_reviews.sample,
+rating: rand(3..5),
+user_id: trainees[1].id,
+session_id: session3.id)
+
+Review.create(content: fake_reviews.sample,
+rating: rand(3..5),
+user_id: trainees[2].id,
+session_id: session3.id)
+
+######################### TRAINEE ##############################################
+
+
+# Create trainee
+
+  trainee = User.new(name: "Mathilde Lindgren",
+              email: "mathilde@gmail.com",
+              password: "123456",
+              trainer: false,
+              )
+              trainee.photo.attach(io: URI.open("https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"), filename: 'nes.png', content_type: 'image/png')
+              trainee.save!
+
+Booking.create!(user_id: trainee.id,
+session_id: session1.id,
+attended: true )
+
+Booking.create!(user_id: trainee.id,
+session_id: session2.id,
+attended: true )
+
+Booking.create!(user_id: trainee.id,
+session_id: session4.id,
+attended: false )
+
+
+Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 02, 20, 15, 00, 0),
+end_time: DateTime.new(2021, 02, 20, 16, 00, 0),
+  price_cents: ("#{5}00").to_i, activity_id: activities[6].id, confirmed: false)
 
