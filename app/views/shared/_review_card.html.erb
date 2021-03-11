@@ -22,7 +22,7 @@
         
       </div>
     </div>
-    <p id="review-date">Feb. 12 2020</p>
+    <p id="review-date"> <%= review.session.start_time.strftime("%A %d.%m.%y") %> </p>
   </div>
   
   <h5><%= session.activity.name %></h5>
