@@ -29,8 +29,11 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
-    <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
-
+    <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer data-turbolinks-track="reload"></script>
+     <%  if params[:action] == "my_bookings" %>
+      <meta name="turbolinks-visit-control" content="reload">
+    <% end %>
+    
     <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
 
   </head>
