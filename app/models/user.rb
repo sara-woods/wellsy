@@ -4,13 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :activities
-  has_many :bookings
+  has_many :activities, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   has_many :booked_sessions, through: :bookings, source: :sessions
   has_many :sessions, through: :activities
   has_many :reviews, dependent: :destroy
   has_one_attached :photo
-  has_many :orders
+  has_many :orders, dependent: :destroy
 
   validates :name, presence: true
   validates :email, uniqueness: true
