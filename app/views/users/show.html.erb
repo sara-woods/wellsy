@@ -57,7 +57,7 @@
           <p class="text-center">This trainer has no reviews yet</p>
         <% else %>
           <% @all_sessions.each do |session| %>
-            <% session.reviews.order(created_at: :desc).each do |review| %>
+            <% session.reviews.each do |review| %>
               <%= render "shared/review_card", review: review, session: session %>
             <% end %>
           <% end %>            
