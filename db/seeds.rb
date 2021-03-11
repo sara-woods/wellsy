@@ -192,7 +192,7 @@ puts "Creating reviews..."
   Review.create(content: fake_reviews.sample,
   rating: rand(3..5),
   user_id: User.where(trainer: false).pluck(:id).sample,
-  session_id: Session.pluck(:id).sample)
+  session_id: Session.where("sessions.end_time < ?", DateTime.now).pluck(:id).sample)
 end
 
 
