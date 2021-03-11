@@ -171,6 +171,12 @@
   // z-index: 300;
 }
 
+.zoom-button {
+  position: absolute;
+  right: 209px;
+  bottom: 48px;
+}
+
 
 @media only screen and (max-width: 730px) {
   .session-card {
