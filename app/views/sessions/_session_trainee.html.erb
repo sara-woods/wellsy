@@ -42,11 +42,7 @@
         </div>
 
         
-        <% if upcoming %>
-          <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary" %>
 
-
-        <% end %>
         
 
 
@@ -83,6 +79,9 @@
 
     </div>
 
+        <% if upcoming %>
+          <%= link_to "Open in Zoom", session.activity.user.zoom_link, class: "btn btn-primary zoom-button", target: "_blank" %>
+        <% end %>
 
         <% if upcoming %>
           <div id="zoom-calendar-buttons" class="d-flex flex-column">
