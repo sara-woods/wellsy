@@ -92,7 +92,7 @@
               <span class="timezone">Europe/London</span>
               <span class="title"><%= session.activity.name %></span>
               <span class="description"><%= session.activity.name %><br>by <%= session.activity.user.name %></span>
-              <span class="location">Class Link: <%= room_path(session.room) %></span>
+              <span class="location">Class Link: <%= session.activity.user.zoom_link %></span>
             </div>
           </div>
         <% end %>
