@@ -9,9 +9,9 @@
 
 require "open-uri"
 
+Order.destroy_all
 Session.destroy_all
 User.destroy_all
-Order.destroy_all
 Booking.destroy_all
 
 Activity.destroy_all
