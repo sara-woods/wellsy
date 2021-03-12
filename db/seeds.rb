@@ -157,6 +157,24 @@ puts "Creating sessions..."
     price_cents: ("#{rand(5..20)}00").to_i, activity_id: Activity.pluck(:id).sample, confirmed: false)
 end
 
+# create more random pilates sessions
+
+Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 04, 20, 15, 00, 0),
+end_time: DateTime.new(2021, 04, 20, 16, 00, 0),
+  price_cents: ("#{9}00").to_i, activity_id: activities[6].id, confirmed: false)
+
+Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 05, 20, 15, 00, 0),
+end_time: DateTime.new(2021, 05, 20, 16, 00, 0),
+  price_cents: ("#{10}00").to_i, activity_id: activities[6].id, confirmed: false)
+
+Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 04, 20, 16, 00, 0),
+end_time: DateTime.new(2021, 04, 20, 17, 00, 0),
+  price_cents: ("#{8}00").to_i, activity_id: activities[15].id, confirmed: false)
+
+  Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 04, 22, 16, 00, 0),
+end_time: DateTime.new(2021, 04, 22, 17, 00, 0),
+  price_cents: ("#{8}00").to_i, activity_id: activities[15].id, confirmed: false)
+
 # Session for Friday
 Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 03, 12, 18, 00, 0),
 end_time: DateTime.new(2021, 03, 12, 20, 00, 0),
@@ -188,7 +206,7 @@ fake_reviews = ["It was my first time trying this and I learned a lot from it. C
 "It was ok"]
 
 puts "Creating reviews..."
-30.times do
+40.times do
   Review.create(content: fake_reviews.sample,
   rating: rand(3..5),
   user_id: User.where(trainer: false).pluck(:id).sample,
@@ -279,12 +297,12 @@ attended: true )
 # Revviews for trainer
 
 Review.create(content: fake_reviews.sample,
-rating: rand(3..5),
+rating: rand(4..5),
 user_id: trainees[0].id,
 session_id: session3.id)
 
 Review.create(content: fake_reviews.sample,
-rating: rand(3..5),
+rating: rand(4..5),
 user_id: trainees[1].id,
 session_id: session3.id)
 
@@ -319,7 +337,26 @@ session_id: session4.id,
 attended: false )
 
 
-Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 02, 20, 15, 00, 0),
-end_time: DateTime.new(2021, 02, 20, 16, 00, 0),
+# Session to book for pilates (saturday,  5 pounds)
+session5 = Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: DateTime.new(2021, 03, 20, 15, 00, 0),
+end_time: DateTime.new(2021, 03, 20, 16, 00, 0),
   price_cents: ("#{5}00").to_i, activity_id: activities[6].id, confirmed: false)
+
+
+# fake bookings from others on pilates
+Booking.create!(user_id: trainees[0].id,
+session_id: session5.id,
+attended: true )
+
+Booking.create!(user_id: trainees[1].id,
+session_id: session5.id,
+attended: true )
+
+Booking.create!(user_id: trainees[2].id,
+session_id: session5.id,
+attended: true )
+
+
+
+
 
