@@ -29,19 +29,19 @@
 
 <!-- div 3 -->
 
-    <div class="col chhead">
-      <div class="container ch">
-        <p>Cart total: <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
-        <button id="pay" class="btn btn-primary">Pay</button>
-        <script src="https://js.stripe.com/v3/"></script>
-        <script>
-          const paymentButton = document.getElementById('pay');
-          paymentButton.addEventListener('click', () => {
-          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-          stripe.redirectToCheckout({
-          sessionId: '<%= @order.checkout_session_id %>'
-          });
-          });
-        </script>
-      </div>
-    </div>
+<div class="col chhead">
+  <div class="container ch">
+    <p>Cart total: <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+    <button id="pay" class="btn btn-primary">Pay</button>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      const paymentButton = document.getElementById('pay');
+      paymentButton.addEventListener('click', () => {
+      const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+      stripe.redirectToCheckout({
+      sessionId: '<%= @order.checkout_session_id %>'
+      });
+      });
+    </script>
+  </div>
+</div>
