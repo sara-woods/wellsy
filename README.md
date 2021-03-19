@@ -1,6 +1,6 @@
 ## Wellsy - Join a live workout from home🏋️‍♀️💪
 
-**Wellsy connects freelance trainers with anyone who wants to join classes from the comfort of their own home.**
+**Web app connecting freelance trainers with anyone who wants to join classes from the comfort of their own home.**
 
 Designed and implemented at the Le Wagon Web Development Bootcamp by:
 
