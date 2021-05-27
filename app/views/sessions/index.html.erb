@@ -4,11 +4,12 @@
 <div class="container mb-2 mt-2">
   <h1 id="workout mb-2">Choose your next <span  class="color-red">workout</span></h1>
 </div>
+
 <!-- sessions listed -->
 <div class="isearch-container mt-2">
   <%= form_tag sessions_path, method: :get do %>
     <div class="isearch-bar">
-        <%= text_field_tag :session, params[:session], class: "form-control isearch-input", placeholder: "search..."%>
+      <%= text_field_tag :session, params[:session], class: "form-control isearch-input", placeholder: "search..."%>
       <div class="isearch-button">
         <%= button_tag(type: "submit", class: "btn btn-circle icustom-circle-button ") do %>
           <i class="fas fa-search"></i>
@@ -18,17 +19,15 @@
   <% end %>
 </div>
 
-
 <!-- filters -->
 
-  <%= simple_form_for :filters, url: sessions_path, method: :get do |f| %>
-   <div class="filter">
-
-   <%= f.input :category, as: :select, label: false, collection:  Category.all, include_blank: "Category", value_method: :id, onchange: "this.form.submit()", input_html: {class: "category-tag-filter" }, selected: params.dig(:filters, :category)%>
-    <%= f.input :price, as: :select, label: false, collection:  ["<£10", "<£15", "<£20", "<£30" ], include_blank: "Price", onchange: "this.form.submit()", input_html: { class: "category-tag-filter" }, selected: params.dig(:filters, :price) %>
-     <%= f.input :day, as: :select, label: false, collection:  Date::DAYNAMES.rotate, include_blank: "Day", onchange: "this.form.submit()", input_html: { class: "category-tag-filter" }, selected: params.dig(:filters, :day) %>
-   <%= f.submit "Filter", class: "btn btn-primary" %>
- </div>
+<%= simple_form_for :filters, url: sessions_path, method: :get do |f| %>
+  <div class="filter">
+    <%= f.input :category, as: :select, label: false, collection:  Category.all, include_blank: "Category", value_method: :id, onchange: "this.form.submit()", input_html: {class: "category-tag-filter filter-1" }, selected: params.dig(:filters, :category)%>
+    <%= f.input :price, as: :select, label: false, collection:  ["<£10", "<£15", "<£20", "<£30" ], include_blank: "Price", onchange: "this.form.submit()", input_html: { class: "category-tag-filter filter-2" }, selected: params.dig(:filters, :price) %>
+    <%= f.input :day, as: :select, label: false, collection:  Date::DAYNAMES.rotate, include_blank: "Day", onchange: "this.form.submit()", input_html: { class: "category-tag-filter filter-3" }, selected: params.dig(:filters, :day) %>
+    <%= f.submit "Apply filter", class: "btn btn-primary  btn-apply-filter" %>
+  </div>
 <% end %>
 
 <div class="container mb-5 mt-2">

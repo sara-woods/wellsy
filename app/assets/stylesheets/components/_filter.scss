@@ -1,36 +1,44 @@
 .category-tag-filter {
-
     top: 10px;
     right: 10px;
-    background-color: #3FAEFF;
+    background-color: $light-gray;
     padding: 4px 10px;
-    border-radius: 20px;
-    color: white;
     text-align-last: center;
     transition: all 0.2s linear;
-
     &:hover {
-      // background-color: #2778b1;
+      background-color: white;
       cursor: pointer;
     }
-
 }
-
 
 .filter {
   height: 50px;
   width: 700px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: baseline;
 }
 
+.filter-1 {
+  border-radius: $border-radius 0 0 $border-radius;
+}
+
+.filter-2 {
+  border-radius: 0;
+}
+
+.filter-3 {
+  border-radius: 0;
+}
+
+.btn-apply-filter {
+  border-radius: 0 $border-radius $border-radius 0; 
+}
 
 select::-ms-expand {
     display: none;
 }
-
 
 select {
     -webkit-appearance: none;
