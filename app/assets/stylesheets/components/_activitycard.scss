@@ -1,9 +1,7 @@
 .activity-card {
-  // margin: 16px 0;
   position: relative;
   display: flex;
   justify-content: space-between;
-  // height: 100px;
   background-color: $light-gray;
   padding: 10px 16px;
   h2 {
@@ -22,14 +20,8 @@
 
 
 .category-tag-activity {
-  // position: absolute;
-  // bottom: 16px;
-  // left: 16px;
-  // margin-top: 10px;
   span {
     margin-top: 10px;
-    // top: 10px;
-    // right: 10px;
     background-color: #3FAEFF;
     padding: 4px 10px;
     border-radius: 20px;
