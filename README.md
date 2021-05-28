@@ -25,10 +25,10 @@ The entire website was built from scratch by us over a simple rails boilerplate,
 - Outlined necessary routes/controllers
 - Created a Figma design
 - Decided team workflow and began coding
-- Eric Payumo presented the MVP on the first Friday
+- [Eric Payumo](https://github.com/Erickson1309) presented the MVP on the first Friday
 - Improved the app based on feedback
 - Added metatags, custom domain name and custom error pages
-- Sara Lotfi presented the final project to a remote live event on Livestorm on the second Friday
+- [Sara Lotfi](https://github.com/saralotfi) presented the final project to a remote live event on Livestorm on the second Friday
 
 Everyday we discussed our progress, decided what needed completing for the day, and then divided the tasks.
 
