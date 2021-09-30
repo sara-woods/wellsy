@@ -150,8 +150,8 @@ end
 
 puts "Creating sessions..."
 #sessions
-40.times do
-  starttime = (((DateTime.now - 10.days)..(DateTime.now + 20.days)).to_a.sample + rand(24).hours).change(min:0)
+100.times do
+  starttime = (((DateTime.now - 10.days)..(DateTime.now + 100.days)).to_a.sample + rand(24).hours).change(min:0)
   Session.create!(min_participants: rand(1..5), max_participants: 20, start_time: starttime,
   end_time: starttime + 1.hour,
     price_cents: ("#{rand(5..20)}00").to_i, activity_id: Activity.pluck(:id).sample, confirmed: false)
